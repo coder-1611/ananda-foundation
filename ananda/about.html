@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Us — Ananda Foundation</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.story-imgs{position:sticky;top:130px}
+.story-img img{width:100%;height:480px;object-fit:cover;border-radius:3px;margin-bottom:16px}
+.story-img-caption{font-size:.8rem;color:var(--muted);font-style:italic;text-align:center}
+.story-text h2{font-family:var(--serif);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:400;color:var(--ink);margin:12px 0 20px}
+.story-text p{line-height:1.85;margin-bottom:16px;font-size:.99rem;color:var(--body)}
+.story-text h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--g800);margin:32px 0 14px}
+.highlight-box{background:var(--g50);border-left:3px solid var(--g500);border-radius:0 3px 3px 0;padding:20px 24px;margin:24px 0}
+.highlight-box p{font-size:.95rem;line-height:1.75;color:var(--ink);margin:0}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.value-card{background:white;border:1px solid var(--border);border-radius:3px;padding:32px}
+.value-card .icon{width:44px;height:44px;background:var(--g50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.value-card .icon svg{width:20px;height:20px;stroke:var(--g700);fill:none;stroke-width:1.6}
+.value-card h4{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:8px}
+.value-card p{font-size:.87rem;color:var(--muted);line-height:1.7}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.team-card{background:white;border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.team-photo{height:280px;background:var(--g50);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.team-photo-placeholder{width:80px;height:80px;border-radius:50%;background:var(--g200);display:flex;align-items:center;justify-content:center}
+.team-photo-placeholder svg{width:36px;height:36px;stroke:var(--g700);fill:none;stroke-width:1.5}
+.team-body{padding:24px}
+.team-body h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:4px}
+.team-role{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);margin-bottom:12px;display:block}
+.team-body p{font-size:.86rem;color:var(--muted);line-height:1.72}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:1.5px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:36px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-28px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--g500);border:2px solid white;box-shadow:0 0 0 2px var(--g500)}
+.tl-year{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);margin-bottom:4px}
+.tl-item h4{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:6px}
+.tl-item p{font-size:.87rem;color:var(--muted);line-height:1.65}
+
+/* REGISTRATION */
+.reg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.reg-card{background:var(--warm);border:1px solid var(--border);border-radius:3px;padding:24px 28px}
+.reg-card label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.reg-card strong{font-size:1.1rem;color:var(--ink);font-family:var(--serif);font-weight:400}
+.reg-card p{font-size:.82rem;color:var(--muted);margin-top:4px}
+
+@media(max-width:900px){
+  .story-grid,.team-grid,.values-grid{grid-template-columns:1fr}
+  .story-imgs{position:static}
+  .reg-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a><a href="campaign.html">Campaign</a><a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-bg" style="background-image:url('../uploads/IMG_1190.jpeg')"></div>
+  <div class="banner-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span>About</span></div>
+    <span class="eyebrow eyebrow-light">Our Story</span>
+    <h1>About Ananda Foundation</h1>
+    <p>Born from a conviction that lasting change requires sustained presence — not short project cycles delivered from the outside.</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="story-grid">
+      <div class="fi story-imgs">
+        <div class="story-img">
+          <img src="../uploads/IMG_1190.jpeg" alt="Ananda Foundation community session">
+          <p class="story-img-caption">Anand Deo at a beekeeping training session, Sikariya, 2024</p>
+        </div>
+        <div class="story-img" style="margin-top:24px">
+          <img src="../uploads/IMG_1195.jpeg" alt="Women at beekeeping training" style="height:300px">
+        </div>
+      </div>
+      <div class="fi fi-d1">
+        <span class="eyebrow">Founding Story</span>
+        <h2 class="story-text" style="font-family:var(--serif);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:400;color:var(--ink);margin:12px 0 20px">From Geneva to Sikariya — a journey home</h2>
+        <div class="story-text">
+          <p>Anand Deo's professional path was shaped by a conscious decision to pursue work grounded in proximity to communities rather than institutional comfort. His early experience at the Office of the High Commissioner for Human Rights in Geneva introduced him to global anti-discrimination frameworks, while his thesis — comparing Dalit communities in India with marginalised groups in Nigeria — deepened his understanding of how structural inequality plays out across different contexts.</p>
+          <p>After completing the European Master's Programme in Human Rights and Democratisation (EMA, Cohort 2013), Anand moved into roles connecting human rights with development practice across Asia and Africa. Through work with organisations including Medic Mobile and the Grameen Foundation, he engaged with community health, women's empowerment and livelihoods — and was exposed to the everyday barriers faced by rural and indigenous communities, particularly women and girls.</p>
+          <h3>Coming Home to Bihar</h3>
+          <p>In 2019, this reflection led Anand back to his home region in India, where he founded the Ananda Foundation. Living and working among tribal and indigenous communities in Sikariya, Nawada district, he began organising medical camps, menstrual health and hygiene awareness activities, and the distribution of essential materials for girls and young women.</p>
+          <p>Over time, the foundation has expanded to include vocational skills support — beekeeping, organic farming, and now a planned sanitary pad manufacturing unit — with the aim of strengthening dignity, autonomy and economic participation. The work continues to evolve gradually, guided by local needs and sustained community relationships.</p>
+        </div>
+        <div class="highlight-box fi">
+          <p>"The work continues to evolve gradually, guided by local needs and by sustained community relationships. We do not arrive with a fixed programme — we listen, and we stay."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div class="fi">
+        <span class="eyebrow">Our Journey</span>
+        <h2 class="section-heading" style="margin:10px 0 40px">From first steps to a growing movement</h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2019</div>
+            <h4>Foundation Established</h4>
+            <p>Anand Deo returns to Sikariya, Nawada and begins community health camps and menstrual hygiene awareness sessions with women and girls.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2020–21</div>
+            <h4>COVID Response &amp; Expansion</h4>
+            <p>During the pandemic, the foundation pivoted to distribute essentials to vulnerable families. Relationships deepened; trust built with 5+ villages.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2022</div>
+            <h4>Formally Registered</h4>
+            <p>Ananda Foundation incorporated on 25 August 2022. PAN issued: AAJTA7839C. Work formalised, funding opened up.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2023</div>
+            <h4>Beekeeping &amp; Livelihood Programs</h4>
+            <p>Launched beekeeping training for rural women in Sikariya and surrounding villages. First cohort of 20+ women trained and equipped.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2024</div>
+            <h4>NGO Darpan Registration &amp; Masoor Dal Launch</h4>
+            <p>Registered on Government NGO Darpan portal (BR/2024/0392085). Launched Ananda Masoor Dal — organic red lentils grown by women farmers.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2026</div>
+            <h4>Pad Manufacturing Unit — Launching August 2026</h4>
+            <p>Fundraising underway (€8,000 target) to install a community-owned sanitary pad manufacturing unit in Sikariya. 10+ women to be employed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="fi fi-d1" style="padding-top:44px">
+        <span class="eyebrow">Our Approach</span>
+        <h2 class="section-heading" style="margin:10px 0 20px">Why we work the way we do</h2>
+        <div class="story-text">
+          <p style="line-height:1.85;margin-bottom:16px;font-size:.99rem;color:var(--body)">Most development organisations work in project cycles — arrive, implement, exit. Ananda Foundation deliberately breaks this model. We live in the communities we serve. Our founder's address is in Sikariya. Our team members are from the same villages.</p>
+          <p style="line-height:1.85;margin-bottom:16px;font-size:.99rem;color:var(--body)">This proximity means we hear things that outsiders don't. We know when a family is struggling, when a program isn't working, when a new opportunity has emerged. It means we can respond in days, not grant cycles.</p>
+          <p style="line-height:1.85;margin-bottom:16px;font-size:.99rem;color:var(--body)">We also prioritise economic sustainability. Where possible, our programs generate income — for the women we train, and for the foundation itself. The organic dal, the planned pad unit, the beekeeping — these aren't just programs, they're enterprises. Dignity comes with economic agency.</p>
+        </div>
+        <div class="values-grid" style="margin-top:36px">
+          <div class="value-card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <h4>Community-Led</h4>
+            <p>Communities tell us what they need. We listen, respond, and adjust — not the other way around.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <h4>Long-Term Presence</h4>
+            <p>No project cycles. We stay, we build trust, and we work at the pace communities set.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <h4>Economic Agency</h4>
+            <p>We create enterprises, not dependents. Every program aims to build self-sufficiency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-hdr fi" style="margin-bottom:48px">
+      <span class="eyebrow">Our Team</span>
+      <h2 class="section-heading">The people behind the work</h2>
+      <p class="section-sub">A small, committed team — rooted in Sikariya, connected to the world.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fi">
+        <div class="team-photo" style="background:var(--g900)">
+          <img src="../uploads/Screenshot%202026-05-15%20at%201.18.50%20PM.png" alt="Anand Deo" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.85">
+        </div>
+        <div class="team-body">
+          <h3>Anand Priya Deo</h3>
+          <span class="team-role">Founder &amp; Director</span>
+          <p>EMA Cohort 2013 (UN Human Rights, Geneva). Previously with Medic Mobile and Grameen Foundation. Founded Ananda Foundation in 2019 after returning to his home district in Bihar. Based in Mumbai &amp; Sikariya.</p>
+          <div style="margin-top:14px"><a href="https://www.linkedin.com/in/ananddeo11/" target="_blank" class="btn btn-outline" style="padding:8px 16px;font-size:.78rem">LinkedIn →</a></div>
+        </div>
+      </div>
+      <div class="team-card fi fi-d1">
+        <div class="team-photo" style="background:var(--cream)">
+          <div class="team-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        </div>
+        <div class="team-body">
+          <h3>Krishna Ballabh Prasad Singh</h3>
+          <span class="team-role">Patron · Former Education Minister of Bihar</span>
+          <p>A veteran statesman and educationist who served as the Education Minister of Bihar. A lifelong champion of rural education and community development, he lends the foundation deep experience in governance, public policy and grassroots institution-building across Bihar.</p>
+        </div>
+      </div>
+      <div class="team-card fi fi-d2">
+        <div class="team-photo" style="background:var(--cream)">
+          <div class="team-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        </div>
+        <div class="team-body">
+          <h3>Dr. Kamini Prasad</h3>
+          <span class="team-role">Health &amp; Women Empowerment Expert</span>
+          <p>Health professional and women's empowerment leader, and wife of former Bihar Education Minister Krishna Ballabh Prasad Singh. She leads the foundation's menstrual health programs — distributing pads, running awareness sessions in schools, and advocating for women's health in rural Bihar. Featured in Dainik Jagran for her outreach work.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section class="section-pad-sm" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-hdr fi" style="margin-bottom:40px">
+      <span class="eyebrow">Legal &amp; Registration</span>
+      <h2 class="section-heading">Registered, transparent &amp; accountable</h2>
+    </div>
+    <div class="reg-grid fi fi-d1">
+      <div class="reg-card"><label>Organisation Name</label><strong>Ananda Foundation</strong><p>Registered NGO, Government of India</p></div>
+      <div class="reg-card"><label>PAN Number</label><strong>AAJTA7839C</strong><p>Income Tax Department, Govt. of India</p></div>
+      <div class="reg-card"><label>Date of Incorporation</label><strong>25 August 2022</strong><p>Formally registered after 3 years of field work</p></div>
+      <div class="reg-card"><label>NGO Darpan Unique ID</label><strong>BR/2024/0392085</strong><p>Government NGO Darpan portal, 2024</p></div>
+      <div class="reg-card"><label>Headquarters</label><strong>Sikariya, Nawada</strong><p>Bihar — 805126, India</p></div>
+      <div class="reg-card"><label>Contact</label><strong>info@anandafoundation.in</strong><p>www.anandafoundation.in</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"><p>Empowering communities, enriching lives. Working in tribal and rural Bihar since 2019.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="impact.html">Impact</a></li></ul></div>
+    <div class="footer-col"><h5>More</h5><ul><li><a href="campaign.html">Campaign</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="news.html">News</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:info@anandafoundation.in">info@anandafoundation.in</a></li><li><a href="#">www.anandafoundation.in</a></li><li><a href="#">Sikariya, Nawada, Bihar 805126</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ananda Foundation. All rights reserved.</p><p class="footer-reg">PAN: AAJTA7839C · NGO Darpan: BR/2024/0392085</p></div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body></html>

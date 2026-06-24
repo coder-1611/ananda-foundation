@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Donate — Ananda Foundation</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.donate-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+
+/* AMOUNT SELECTOR */
+.amount-section h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:20px}
+.amt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.amt-btn{padding:16px 10px;border:1.5px solid var(--border);border-radius:3px;background:white;cursor:pointer;text-align:center;transition:all .2s;font-family:var(--sans)}
+.amt-btn:hover{border-color:var(--g700)}
+.amt-btn.on{background:var(--g800);border-color:var(--g800);color:#e8edd8}
+.amt-btn .amt-num{font-family:var(--serif);font-size:1.5rem;font-weight:300;display:block;color:var(--ink);line-height:1.2}
+.amt-btn.on .amt-num{color:#e8edd8}
+.amt-btn .amt-impact{font-size:.72rem;color:var(--muted);margin-top:3px;line-height:1.4;display:block}
+.amt-btn.on .amt-impact{color:rgba(232,237,216,.65)}
+.amt-custom{display:flex;gap:10px;margin-bottom:28px}
+.amt-custom input{flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:3px;font-family:var(--sans);font-size:1rem;color:var(--ink);outline:none;transition:border-color .2s}
+.amt-custom input:focus{border-color:var(--g700)}
+.amt-custom input::placeholder{color:var(--muted)}
+.donate-btn-wrap{margin-top:8px}
+.donate-submit{width:100%;padding:16px;background:var(--g800);color:#e8edd8;border:none;border-radius:3px;font-family:var(--sans);font-size:1rem;font-weight:500;cursor:pointer;transition:background .2s;letter-spacing:.02em}
+.donate-submit:hover{background:var(--g900)}
+.donate-note{font-size:.76rem;color:var(--muted);text-align:center;margin-top:10px;line-height:1.6}
+
+/* BANK TRANSFER */
+.bank-box{background:var(--warm);border:1px solid var(--border);border-radius:3px;padding:28px;margin-top:28px}
+.bank-box h4{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:16px}
+.bank-field{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.87rem}
+.bank-field:last-child{border-bottom:none}
+.bank-field label{color:var(--muted)}
+.bank-field strong{color:var(--ink);text-align:right}
+
+/* SIDEBAR */
+.donate-sidebar{}
+.impact-breakdown{background:var(--g900);border-radius:6px;padding:32px;color:#e8edd8;margin-bottom:24px}
+.impact-breakdown h4{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:#e8edd8;margin-bottom:20px}
+.impact-row{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);align-items:flex-start}
+.impact-row:last-child{border-bottom:none}
+.impact-row-amt{font-family:var(--serif);font-size:1.2rem;color:var(--g300);min-width:72px;flex-shrink:0;font-weight:300}
+.impact-row-desc{font-size:.83rem;color:rgba(232,237,216,.65);line-height:1.6}
+.trust-box{border:1px solid var(--border);border-radius:3px;padding:24px;background:white}
+.trust-box h4{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:16px}
+.trust-item{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;font-size:.85rem;color:var(--body);line-height:1.55}
+.trust-item::before{content:'✓';color:var(--g500);font-weight:bold;flex-shrink:0;margin-top:1px}
+.reg-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.reg-item{background:var(--warm);border-radius:3px;padding:12px 14px}
+.reg-item label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+.reg-item strong{font-size:.88rem;color:var(--ink)}
+
+/* WHY SECTION */
+.why-donate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.wd-card{padding:28px;background:white;border:1px solid var(--border);border-radius:3px}
+.wd-num{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--g200);line-height:1;margin-bottom:10px}
+.wd-card h4{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:8px}
+.wd-card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+
+/* CAMPAIGN CALLOUT */
+.campaign-callout{background:var(--g800);border-radius:6px;padding:36px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;color:#e8edd8;margin-top:48px}
+.campaign-callout h4{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:#e8edd8;margin-bottom:8px}
+.campaign-callout p{font-size:.88rem;color:rgba(232,237,216,.68);line-height:1.7}
+.prog-bar-track{background:rgba(255,255,255,.1);border-radius:99px;height:5px;margin:12px 0 6px}
+.prog-bar-fill{height:100%;border-radius:99px;background:var(--g500);width:0;transition:width 1.2s ease}
+.prog-bar-labels{display:flex;justify-content:space-between;font-size:.72rem;color:rgba(232,237,216,.4)}
+
+/* FAQs */
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{padding:18px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:500;color:var(--ink);font-size:.96rem;user-select:none}
+.faq-q .faq-icon{width:24px;height:24px;border-radius:50%;background:var(--g50);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s;font-size:.85rem;color:var(--g700)}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding-bottom:16px;font-size:.89rem;color:var(--muted);line-height:1.78}
+.faq-item.open .faq-a{display:block}
+
+@media(max-width:900px){
+  .donate-grid,.why-donate-grid{grid-template-columns:1fr}
+  .campaign-callout{grid-template-columns:1fr}
+  .amt-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a><a href="campaign.html">Campaign</a><a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta active" style="background:var(--g50)!important;color:var(--g900)!important">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-bg" style="background-image:url('../uploads/IMG_1190.jpeg')"></div>
+  <div class="banner-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span>Donate</span></div>
+    <span class="eyebrow eyebrow-light">Support Our Work</span>
+    <h1>Your support<br>changes lives.</h1>
+    <p>Every rupee goes directly to communities in Nawada — no bloated overheads, no corporate salaries. Just honest, grassroots work with people who need it most.</p>
+  </div>
+</div>
+
+<!-- DONATE FORM + SIDEBAR -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="donate-grid">
+      <div class="fi">
+        <!-- AMOUNT -->
+        <div class="amount-section">
+          <h3>Choose an amount</h3>
+          <div class="amt-grid">
+            <button class="amt-btn" data-amt="500"><span class="amt-num">₹500</span><span class="amt-impact">Provides 10 sanitary pads for a girl in school</span></button>
+            <button class="amt-btn on" data-amt="2000"><span class="amt-num">₹2,000</span><span class="amt-impact">Covers materials for a beekeeping training session</span></button>
+            <button class="amt-btn" data-amt="5000"><span class="amt-num">₹5,000</span><span class="amt-impact">Supports a medical camp for 20 families</span></button>
+            <button class="amt-btn" data-amt="10000"><span class="amt-num">₹10,000</span><span class="amt-impact">Funds one month of vocational training for a woman</span></button>
+            <button class="amt-btn" data-amt="25000"><span class="amt-num">₹25,000</span><span class="amt-impact">Contributes to pad unit equipment purchase</span></button>
+            <button class="amt-btn" data-amt="50000"><span class="amt-num">₹50,000</span><span class="amt-impact">Covers nearly 1% of the pad unit total cost</span></button>
+          </div>
+          <div class="amt-custom">
+            <input type="number" id="custom-amt" placeholder="Enter custom amount (₹)" min="100">
+            <button class="btn btn-outline" onclick="setCustom()">Set</button>
+          </div>
+          <div class="donate-btn-wrap">
+            <button class="donate-submit" onclick="handleDonate()">Donate ₹2,000 →</button>
+          </div>
+          <p class="donate-note">Clicking 'Donate' will open an email to info@anandafoundation.in with your chosen amount. We will reply within 24 hours with payment details. Bank transfer and UPI available.</p>
+        </div>
+
+        <!-- BANK TRANSFER -->
+        <div class="bank-box">
+          <h4>Prefer bank transfer or UPI?</h4>
+          <p style="font-size:.86rem;color:var(--muted);margin-bottom:16px">Write to <a href="mailto:info@anandafoundation.in" style="color:var(--g700)">info@anandafoundation.in</a> with your donation amount and we will send you account details, UPI ID and a receipt. We accept NEFT, IMPS, UPI and cheques.</p>
+          <div class="bank-field"><label>Account Name</label><strong>Ananda Foundation</strong></div>
+          <div class="bank-field"><label>PAN</label><strong>AAJTA7839C</strong></div>
+          <div class="bank-field"><label>NGO Darpan ID</label><strong>BR/2024/0392085</strong></div>
+          <div class="bank-field"><label>Bank Details</label><strong>Available on request</strong></div>
+          <div class="bank-field"><label>UPI</label><strong>Available on request</strong></div>
+          <div style="margin-top:16px"><a href="mailto:info@anandafoundation.in?subject=Donation%20Enquiry" class="btn btn-outline" style="font-size:.84rem">Request Bank Details →</a></div>
+        </div>
+
+        <!-- CAMPAIGN CALLOUT -->
+        <div class="campaign-callout fi fi-d1">
+          <div>
+            <h4>Active Campaign: Pad Manufacturing Unit</h4>
+            <p>We are 35% of the way to our €8,000 goal. Your donation today directly funds this campaign.</p>
+            <div class="prog-bar-track"><div class="prog-bar-fill" id="pf"></div></div>
+            <div class="prog-bar-labels"><span>35% raised · ~€2,800</span><span>€8,000 goal</span></div>
+          </div>
+          <a href="campaign.html" class="btn btn-cream" style="white-space:nowrap">Campaign Details →</a>
+        </div>
+      </div>
+
+      <div class="donate-sidebar fi fi-d1">
+        <!-- IMPACT BREAKDOWN -->
+        <div class="impact-breakdown">
+          <h4>Your impact by amount</h4>
+          <div class="impact-row"><div class="impact-row-amt">₹500</div><div class="impact-row-desc">Provides 10 high-quality sanitary pads for a girl who otherwise goes without — keeping her in school during her period.</div></div>
+          <div class="impact-row"><div class="impact-row-amt">₹2,000</div><div class="impact-row-desc">Covers the materials and facilitation cost of one beekeeping training session — skills that stay with a woman for life.</div></div>
+          <div class="impact-row"><div class="impact-row-amt">₹5,000</div><div class="impact-row-desc">Funds a medical camp in a village that has no regular access to doctors — check-ups, medicines and referrals.</div></div>
+          <div class="impact-row"><div class="impact-row-amt">₹10,000</div><div class="impact-row-desc">One month of vocational training for a rural woman — building skills, confidence and independent income.</div></div>
+          <div class="impact-row"><div class="impact-row-amt">₹25,000</div><div class="impact-row-desc">A direct contribution to the pad manufacturing unit — machinery that employs 10+ women and produces 80,000 pads a month.</div></div>
+          <div class="impact-row"><div class="impact-row-amt">₹50,000+</div><div class="impact-row-desc">A transformational gift — write to us and we will arrange a personal call with our founder Anand Deo to discuss how your support is deployed.</div></div>
+        </div>
+
+        <!-- TRUST -->
+        <div class="trust-box">
+          <h4>Why trust us with your donation</h4>
+          <div class="trust-item">Registered NGO with Government of India — PAN issued by Income Tax Dept.</div>
+          <div class="trust-item">Listed on official NGO Darpan portal (BR/2024/0392085) — transparent and accountable.</div>
+          <div class="trust-item">Annual progress reports available on request — we document everything.</div>
+          <div class="trust-item">No bloated overheads — our founder works from the same village as our beneficiaries.</div>
+          <div class="trust-item">National media coverage validates our field work (Dainik Jagran, Global Campus Alumni).</div>
+          <div class="trust-item">Every donation acknowledged with a receipt and impact update.</div>
+          <div class="reg-strip">
+            <div class="reg-item"><label>PAN</label><strong>AAJTA7839C</strong></div>
+            <div class="reg-item"><label>NGO Darpan</label><strong>BR/2024/0392085</strong></div>
+            <div class="reg-item"><label>Incorporated</label><strong>25 Aug 2022</strong></div>
+            <div class="reg-item"><label>Location</label><strong>Sikariya, Bihar</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DONATE -->
+<section class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-hdr section-hdr-center fi" style="margin-bottom:48px">
+      <span class="eyebrow">Why It Matters</span>
+      <h2 class="section-heading">Three reasons to give today</h2>
+    </div>
+    <div class="why-donate-grid">
+      <div class="wd-card fi"><div class="wd-num">01</div><h4>The need is real and urgent</h4><p>In Nawada, Bihar, women lack access to basic health products, earn no independent income, and are excluded from economic decisions. This is not a distant problem — it is happening now, in specific villages, with specific families we know by name.</p></div>
+      <div class="wd-card fi fi-d1"><div class="wd-num">02</div><h4>Your money goes directly to work</h4><p>Ananda Foundation has minimal overhead. Our founder lives and works in the community. There are no expensive offices, no consultant fees, no corporate structures. When you donate ₹1,000, nearly all of it reaches the people it's meant for.</p></div>
+      <div class="wd-card fi fi-d2"><div class="wd-num">03</div><h4>You are investing in sustainability</h4><p>We are not building dependency. The beekeeping program creates independent earners. The organic dal creates a farmer-owned enterprise. The pad unit will sustain itself. Your donation today is an investment in structures that will outlast any grant cycle.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container" style="max-width:760px">
+    <div class="section-hdr section-hdr-center fi" style="margin-bottom:48px">
+      <span class="eyebrow">Questions</span>
+      <h2 class="section-heading">Frequently asked questions</h2>
+    </div>
+    <div class="faq-list fi fi-d1">
+      <div class="faq-item">
+        <div class="faq-q">Is my donation tax-deductible?<span class="faq-icon">+</span></div>
+        <div class="faq-a">We are working on obtaining 80G certification, which will allow donors to claim tax deductions under the Income Tax Act. Please write to us for the current status. All donations are acknowledged with a formal receipt.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How will I know my donation was received?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Every donation is acknowledged with a receipt within 24 hours. For larger donations (₹10,000+), we will arrange a personal update from our founder Anand Deo on how the funds are being deployed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I donate in Euros, Dollars or other currencies?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes — international donations are welcome. Please write to info@anandafoundation.in and we will provide SWIFT/international transfer details. Currency conversion fees may apply depending on your bank.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I specify which program my donation goes to?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Absolutely. You can designate your donation to a specific program — menstrual health, beekeeping training, medical camps, or the pad manufacturing unit campaign. Just mention this in your email when you write to us.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can my company make a CSR donation to Ananda Foundation?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes. Ananda Foundation is registered on NGO Darpan (BR/2024/0392085), which is a prerequisite for many CSR programs. Write to us at info@anandafoundation.in for a CSR proposal, MOU template and registration documents.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What percentage of my donation reaches beneficiaries?<span class="faq-icon">+</span></div>
+        <div class="faq-a">We aim to keep overheads as low as possible — the majority of donations go directly to program costs. Because our founder and team operate from within the community, there are no high-cost external staff or facilities. Full financial statements are available on request.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I volunteer instead of (or as well as) donating?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes — skills-based volunteers are always welcome. We particularly need support with communications, graphic design, fundraising strategy, and health professionals who can join our medical camps. Write to us explaining your background and availability.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="background:var(--g700);padding:88px 28px;text-align:center">
+  <div style="max-width:520px;margin:0 auto">
+    <span class="eyebrow" style="color:var(--g100)">Make a Difference Today</span>
+    <h2 style="font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:400;color:#e8edd8;margin:14px 0 18px;line-height:1.1">Every rupee counts.<br>Every person matters.</h2>
+    <p style="color:rgba(232,237,216,.78);line-height:1.8;margin-bottom:40px">Whether you give ₹500 or ₹50,000 — you are part of something real, something lasting, something that changes lives in Nawada, Bihar.</p>
+    <a href="mailto:info@anandafoundation.in?subject=Donation%20to%20Ananda%20Foundation" class="btn btn-cream btn-lg">Donate Now →</a>
+    <p style="font-size:.76rem;color:rgba(232,237,216,.35);margin-top:20px">info@anandafoundation.in · PAN: AAJTA7839C · NGO Darpan: BR/2024/0392085</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"><p>Empowering communities, enriching lives. Working in tribal and rural Bihar since 2019.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="impact.html">Impact</a></li></ul></div>
+    <div class="footer-col"><h5>More</h5><ul><li><a href="campaign.html">Campaign</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="news.html">News</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:info@anandafoundation.in">info@anandafoundation.in</a></li><li><a href="#">www.anandafoundation.in</a></li><li><a href="#">Sikariya, Nawada, Bihar 805126</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ananda Foundation. All rights reserved.</p><p class="footer-reg">PAN: AAJTA7839C · NGO Darpan: BR/2024/0392085</p></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+// Donation amount
+let selectedAmt=2000;
+const submitBtn=document.querySelector('.donate-submit');
+function updateBtn(){submitBtn.textContent=`Donate ₹${selectedAmt.toLocaleString('en-IN')} →`}
+document.querySelectorAll('.amt-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    selectedAmt=parseInt(btn.dataset.amt);
+    document.getElementById('custom-amt').value='';
+    updateBtn();
+  });
+});
+function setCustom(){
+  const v=parseInt(document.getElementById('custom-amt').value);
+  if(v&&v>=100){
+    selectedAmt=v;
+    document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('on'));
+    updateBtn();
+  }
+}
+function handleDonate(){
+  window.location.href=`mailto:info@anandafoundation.in?subject=Donation%20to%20Ananda%20Foundation%20-%20%E2%82%B9${selectedAmt}&body=Hello%2C%0A%0AI%20would%20like%20to%20donate%20%E2%82%B9${selectedAmt}%20to%20Ananda%20Foundation.%0A%0APlease%20send%20me%20the%20payment%20details.%0A%0AThank%20you.`;
+}
+
+// Progress bar
+const pf=document.getElementById('pf');
+if(pf){const pio=new IntersectionObserver(e=>{if(e[0].isIntersecting){pf.style.width='35%';pio.disconnect()}});pio.observe(pf)}
+
+// FAQs
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body></html>

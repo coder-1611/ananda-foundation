@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery — Ananda Foundation</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.filter-btn{padding:8px 20px;border-radius:99px;font-size:.82rem;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:white;color:var(--muted);transition:all .2s}
+.filter-btn:hover{border-color:var(--g700);color:var(--g700)}
+.filter-btn.active{background:var(--g800);color:#e8edd8;border-color:var(--g800)}
+
+.masonry{columns:3;gap:14px}
+.masonry-item{break-inside:avoid;margin-bottom:14px;overflow:hidden;border-radius:4px;cursor:pointer;position:relative}
+.masonry-item img{width:100%;display:block;transition:transform .55s ease}
+.masonry-item:hover img{transform:scale(1.04)}
+.masonry-item .caption-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,42,8,.75) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:20px}
+.masonry-item:hover .caption-overlay{opacity:1}
+.caption-text{color:#e8edd8;font-size:.82rem;line-height:1.4}
+.caption-text strong{display:block;font-weight:500;margin-bottom:2px}
+.caption-text span{opacity:.75;font-size:.76rem}
+.masonry-item.hide{display:none}
+
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+#lightbox.open{display:flex}
+#lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:3px}
+.lb-close{position:absolute;top:20px;right:24px;width:40px;height:40px;background:rgba(255,255,255,.1);border:none;border-radius:50%;cursor:pointer;color:white;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lb-close:hover{background:rgba(255,255,255,.2)}
+.lb-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:.82rem;text-align:center;max-width:500px}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,.1);border:none;border-radius:50%;cursor:pointer;color:white;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.2)}
+
+/* STATS ROW */
+.gallery-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:64px}
+.gal-stat{background:var(--warm);padding:28px 24px;text-align:center}
+.gal-stat strong{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--g700);display:block}
+.gal-stat span{font-size:.78rem;color:var(--muted);margin-top:6px;display:block}
+
+@media(max-width:900px){.masonry{columns:2}}
+@media(max-width:500px){.masonry{columns:1}.gallery-stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a><a href="campaign.html">Campaign</a><a href="products.html">Products</a>
+      <a href="gallery.html" class="active">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-bg" style="background-image:url('../uploads/IMG_1195.jpeg')"></div>
+  <div class="banner-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span>Gallery</span></div>
+    <span class="eyebrow eyebrow-light">Field Gallery</span>
+    <h1>Life in the community</h1>
+    <p>Photographs from the field — community training sessions, health programs, beekeeping workshops, and the people at the heart of Ananda Foundation's work.</p>
+  </div>
+</div>
+
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <!-- FILTER -->
+    <div class="filter-bar fi">
+      <button class="filter-btn active" data-cat="all">All Photos</button>
+      <button class="filter-btn" data-cat="community">Community</button>
+      <button class="filter-btn" data-cat="health">Health</button>
+      <button class="filter-btn" data-cat="beekeeping">Beekeeping</button>
+      <button class="filter-btn" data-cat="products">Products</button>
+      <button class="filter-btn" data-cat="press">Press &amp; Media</button>
+    </div>
+
+    <!-- MASONRY GRID -->
+    <div class="masonry fi fi-d1" id="gallery">
+
+      <div class="masonry-item" data-cat="beekeeping" data-src="../uploads/IMG_1195.jpeg" data-caption="Women holding a honeycomb frame during beekeeping training" data-location="Sikariya, Nawada — 2024">
+        <img src="../uploads/IMG_1195.jpeg" alt="Women at beekeeping training holding honeycomb frame">
+        <div class="caption-overlay"><div class="caption-text"><strong>Beekeeping Training</strong><span>Sikariya, Nawada · 2024</span></div></div>
+      </div>
+
+      <div class="masonry-item" data-cat="community" data-src="../uploads/IMG_1190.jpeg" data-caption="Community training session led by Anand Deo, Sikariya" data-location="Sikariya, Nawada — 2024">
+        <img src="../uploads/IMG_1190.jpeg" alt="Community training session with rural women">
+        <div class="caption-overlay"><div class="caption-text"><strong>Community Training Session</strong><span>Sikariya, Nawada · 2024</span></div></div>
+      </div>
+
+      <div class="masonry-item" data-cat="health" data-src="../uploads/WhatsApp%20Image%202024-04-01%20at%2011.25.08%20%283%29.jpeg" data-caption="Dr. Kamini Prasad distributing sanitary pads to girls in a government school, Ranchi" data-location="Ranchi, Jharkhand — 2024">
+        <img src="../uploads/WhatsApp%20Image%202024-04-01%20at%2011.25.08%20%283%29.jpeg" alt="Ananda Foundation sanitary pad distribution in school">
+        <div class="caption-overlay"><div class="caption-text"><strong>Pad Distribution — Government School</strong><span>Ranchi · April 2024</span></div></div>
+      </div>
+
+      <div class="masonry-item" data-cat="products" data-src="../uploads/Screenshot%202026-05-11%20at%2011.48.06%20PM.png" data-caption="Ananda Masoor Dal — 1kg organic red lentils grown by women farmers in Sikariya" data-location="Sikariya, Nawada — 2026">
+        <img src="../uploads/Screenshot%202026-05-11%20at%2011.48.06%20PM.png" alt="Ananda Masoor Dal organic red lentils packaging">
+        <div class="caption-overlay"><div class="caption-text"><strong>Ananda Masoor Dal</strong><span>Product Launch · 2026</span></div></div>
+      </div>
+
+      <div class="masonry-item" data-cat="press" data-src="../uploads/Screenshot%202025-03-14%20at%209.02.25%20PM.png" data-caption="Dainik Jagran coverage of Ananda Foundation's pad distribution program at Rajkiya Madhya Vidyalaya, Ranchi" data-location="Dainik Jagran — 2025">
+        <img src="../uploads/Screenshot%202025-03-14%20at%209.02.25%20PM.png" alt="Dainik Jagran newspaper coverage of Ananda Foundation">
+        <div class="caption-overlay"><div class="caption-text"><strong>Dainik Jagran Coverage</strong><span>National Hindi Media · 2025</span></div></div>
+      </div>
+
+      <div class="masonry-item" data-cat="press" data-src="../uploads/Screenshot%202026-05-15%20at%201.18.50%20PM.png" data-caption="Global Campus Alumni Newsletter — Founder Anand Deo featured in March 2026 issue for his human rights and development work in Bihar" data-location="Global Campus Alumni — March 2026">
+        <img src="../uploads/Screenshot%202026-05-15%20at%201.18.50%20PM.png" alt="Global Campus Alumni Newsletter feature on Anand Deo">
+        <div class="caption-overlay"><div class="caption-text"><strong>Global Campus Alumni Feature</strong><span>March 2026 · Issue 1</span></div></div>
+      </div>
+
+      <div class="masonry-item" data-cat="community" data-src="../uploads/New%20Updated%20Plan.png" data-caption="Project proposal for the Sanitary Pad Manufacturing Unit — Ananda Foundation's flagship 2026 campaign" data-location="Sikariya, Nawada — 2026">
+        <img src="../uploads/New%20Updated%20Plan.png" alt="Sanitary Pad Manufacturing Unit project proposal">
+        <div class="caption-overlay"><div class="caption-text"><strong>Pad Unit Campaign Proposal</strong><span>Sikariya · Launching Aug 2026</span></div></div>
+      </div>
+
+    </div>
+
+    <!-- STATS -->
+    <div class="gallery-stats fi">
+      <div class="gal-stat"><strong>7</strong><span>Photos in this gallery</span></div>
+      <div class="gal-stat"><strong>4</strong><span>Districts covered</span></div>
+      <div class="gal-stat"><strong>2019–26</strong><span>Years documented</span></div>
+      <div class="gal-stat"><strong>3</strong><span>Programs represented</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <button class="lb-prev" id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-next" id="lb-next">›</button>
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
+
+<section style="background:var(--g700);padding:64px 28px;text-align:center">
+  <div style="max-width:480px;margin:0 auto">
+    <span class="eyebrow" style="color:var(--g100)">More to Share</span>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;color:#e8edd8;margin:14px 0 18px">Have photos from the field?</h2>
+    <p style="color:rgba(232,237,216,.75);line-height:1.78;margin-bottom:32px">If you have visited us or have photos from community events, we would love to feature them. Write to us.</p>
+    <a href="mailto:info@anandafoundation.in?subject=Gallery%20Photos" class="btn btn-cream">Send us photos →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"><p>Empowering communities, enriching lives. Working in tribal and rural Bihar since 2019.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="impact.html">Impact</a></li></ul></div>
+    <div class="footer-col"><h5>More</h5><ul><li><a href="campaign.html">Campaign</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="news.html">News</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:info@anandafoundation.in">info@anandafoundation.in</a></li><li><a href="#">www.anandafoundation.in</a></li><li><a href="#">Sikariya, Nawada, Bihar 805126</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ananda Foundation. All rights reserved.</p><p class="footer-reg">PAN: AAJTA7839C · NGO Darpan: BR/2024/0392085</p></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat=btn.dataset.cat;
+    document.querySelectorAll('.masonry-item').forEach(item=>{
+      item.classList.toggle('hide', cat!=='all' && item.dataset.cat!==cat);
+    });
+  });
+});
+
+// Lightbox
+const items=[...document.querySelectorAll('.masonry-item')];
+let current=0;
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lb-img');
+const lbCap=document.getElementById('lb-caption');
+
+function openLB(idx){
+  const visible=items.filter(i=>!i.classList.contains('hide'));
+  current=visible.indexOf(items[idx]);
+  if(current<0)current=0;
+  show(visible);
+}
+function show(visible){
+  const item=visible[current];
+  lbImg.src=item.dataset.src;
+  lbCap.textContent=item.dataset.caption+' — '+item.dataset.location;
+  lb.classList.add('open');
+}
+items.forEach((item,i)=>{
+  item.addEventListener('click',()=>openLB(i));
+});
+document.getElementById('lb-close').addEventListener('click',()=>lb.classList.remove('open'));
+document.getElementById('lb-prev').addEventListener('click',()=>{
+  const visible=items.filter(i=>!i.classList.contains('hide'));
+  current=(current-1+visible.length)%visible.length;
+  show(visible);
+});
+document.getElementById('lb-next').addEventListener('click',()=>{
+  const visible=items.filter(i=>!i.classList.contains('hide'));
+  current=(current+1)%visible.length;
+  show(visible);
+});
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  const visible=items.filter(i=>!i.classList.contains('hide'));
+  if(e.key==='Escape')lb.classList.remove('open');
+  if(e.key==='ArrowLeft'){current=(current-1+visible.length)%visible.length;show(visible)}
+  if(e.key==='ArrowRight'){current=(current+1)%visible.length;show(visible)}
+});
+</script>
+</body></html>

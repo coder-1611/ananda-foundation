@@ -1,0 +1,7 @@
+# Broken/partial export archive — not part of the site
+*.zip
+# Design-tool artifacts
+.thumbnail
+.DS_Store
+# Unreferenced working scraps
+scraps/

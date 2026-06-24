@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Programs — Ananda Foundation</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.prog-section{padding:88px 0;border-bottom:1px solid var(--border)}
+.prog-section:last-of-type{border-bottom:none}
+.prog-section-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.prog-section-inner.reverse{direction:rtl}
+.prog-section-inner.reverse>*{direction:ltr}
+.prog-photo{position:sticky;top:130px}
+.prog-photo img{width:100%;height:520px;object-fit:cover;border-radius:3px}
+.prog-detail .tag{display:inline-block;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;background:var(--g50);color:var(--g700);padding:5px 12px;border-radius:2px;margin-bottom:16px}
+.prog-detail h2{font-family:var(--serif);font-size:clamp(2rem,3vw,2.9rem);font-weight:400;color:var(--ink);margin-bottom:20px}
+.prog-detail p{line-height:1.85;margin-bottom:14px;font-size:.99rem;color:var(--body)}
+.prog-detail h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--g800);margin:28px 0 12px}
+.prog-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.prog-stat{background:var(--g50);border-radius:3px;padding:18px 20px}
+.prog-stat strong{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--g700);display:block;line-height:1}
+.prog-stat span{font-size:.78rem;color:var(--muted);margin-top:4px;display:block}
+.prog-how{margin:24px 0}
+.prog-how-item{display:flex;gap:14px;margin-bottom:16px}
+.prog-how-num{width:28px;height:28px;border-radius:50%;background:var(--g800);color:#e8edd8;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:500;flex-shrink:0;margin-top:2px}
+.prog-how-item p{font-size:.9rem;color:var(--body);line-height:1.72;margin:0}
+.prog-how-item strong{color:var(--ink);display:block;margin-bottom:2px}
+.prog-highlight{background:var(--cream);border-radius:3px;padding:20px 24px;border-left:3px solid var(--g500);margin:24px 0}
+.prog-highlight p{font-size:.93rem;line-height:1.75;color:var(--ink);margin:0;font-family:var(--serif);font-style:italic}
+
+/* UPCOMING */
+.upcoming-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
+.upcoming-card{border:1px solid var(--border);border-radius:3px;padding:28px;background:white}
+.upcoming-card .status{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);display:inline-block;margin-bottom:12px;background:var(--g50);padding:4px 10px;border-radius:2px}
+.upcoming-card h4{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:10px}
+.upcoming-card p{font-size:.87rem;color:var(--muted);line-height:1.7}
+
+@media(max-width:900px){
+  .prog-section-inner,.prog-section-inner.reverse{grid-template-columns:1fr;direction:ltr;gap:40px}
+  .prog-photo{position:static}
+  .prog-photo img{height:300px}
+  .upcoming-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html" class="active">Programs</a>
+      <a href="impact.html">Impact</a><a href="campaign.html">Campaign</a><a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-bg" style="background-image:url('../uploads/IMG_1195.jpeg')"></div>
+  <div class="banner-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span>Programs</span></div>
+    <span class="eyebrow eyebrow-light">What We Do</span>
+    <h1>Our Programs</h1>
+    <p>Four active programs — each designed around what communities in Nawada told us they needed most. No external agendas. No fixed timelines. Just sustained, responsive work.</p>
+  </div>
+</div>
+
+<!-- PROGRAM NAV -->
+<div style="background:var(--warm);border-bottom:1px solid var(--border);position:sticky;top:66px;z-index:100">
+  <div class="container" style="display:flex;gap:0;overflow-x:auto">
+    <a href="#health" style="padding:16px 24px;font-size:.83rem;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s">Menstrual Health</a>
+    <a href="#beekeeping" style="padding:16px 24px;font-size:.83rem;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s">Beekeeping &amp; Skills</a>
+    <a href="#farming" style="padding:16px 24px;font-size:.83rem;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s">Organic Farming</a>
+    <a href="#medical" style="padding:16px 24px;font-size:.83rem;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s">Medical Camps</a>
+  </div>
+</div>
+
+<!-- PROGRAM 1: HEALTH -->
+<section id="health" class="prog-section" style="background:var(--white)">
+  <div class="container">
+    <div class="prog-section-inner">
+      <div class="prog-photo fi">
+        <img src="../uploads/WhatsApp%20Image%202024-04-01%20at%2011.25.08%20%283%29.jpeg" alt="Sanitary pad distribution at school in Ranchi">
+      </div>
+      <div class="prog-detail fi fi-d1">
+        <span class="tag">Health Program</span>
+        <h2>Menstrual Health &amp; Hygiene</h2>
+        <p>In rural Bihar, menstruation remains heavily stigmatised. Girls miss school during their periods — not because they want to, but because they have no access to sanitary products and no one to talk to about what they are experiencing. Ananda Foundation addresses this head-on.</p>
+        <p>Led by Dr. Kamini Prasad, our health program reaches adolescent girls in government schools across Nawada district with free sanitary pads, awareness sessions, and open conversations that break the silence around menstruation.</p>
+
+        <h3>What we do</h3>
+        <div class="prog-how">
+          <div class="prog-how-item"><div class="prog-how-num">1</div><p><strong>Free Pad Distribution</strong> — We visit government schools and distribute sanitary pad packages directly to adolescent girls, ensuring access regardless of economic status.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">2</div><p><strong>Awareness Sessions</strong> — Interactive sessions on menstrual hygiene, body health, and when to seek medical care. Girls learn to speak openly — to each other, parents, and teachers.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">3</div><p><strong>Teacher &amp; Parent Engagement</strong> — We work with school staff and local mothers to normalise menstruation and create supportive environments at home and school.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">4</div><p><strong>Community Health Education</strong> — Broader awareness in communities, covering hygiene, nutrition, and reproductive health for women of all ages.</p></div>
+        </div>
+
+        <div class="prog-stats">
+          <div class="prog-stat"><strong>5,000<sup style="font-size:.9rem">+</sup></strong><span>Pads distributed to girls in schools</span></div>
+          <div class="prog-stat"><strong>8<sup style="font-size:.9rem">+</sup></strong><span>Government schools reached in Nawada</span></div>
+        </div>
+
+        <div class="prog-highlight"><p>"The girls were shy at first. By the end, they were asking questions no one had ever asked before. That is what change looks like." — Dr. Kamini Prasad</p></div>
+
+        <p style="font-size:.88rem;color:var(--muted);line-height:1.7;margin-top:8px">Coverage in <strong>Dainik Jagran</strong> (Ranchi edition) highlighted our pad distribution program at Rajkiya Madhya Vidyalaya, Ranchi, where Dr. Kamini Prasad led sessions on menstrual health, hygiene and nutrition for girls and their teachers.</p>
+        <div style="margin-top:24px"><a href="campaign.html" class="btn btn-outline">Next Step: Manufacturing our own pads →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM 2: BEEKEEPING -->
+<section id="beekeeping" class="prog-section" style="background:var(--warm)">
+  <div class="container">
+    <div class="prog-section-inner reverse">
+      <div class="prog-photo fi">
+        <img src="../uploads/IMG_1195.jpeg" alt="Rural women at beekeeping training session">
+      </div>
+      <div class="prog-detail fi fi-d1">
+        <span class="tag">Livelihoods Program</span>
+        <h2>Beekeeping &amp; Vocational Skills</h2>
+        <p>Economic dependence is one of the deepest forms of powerlessness. In Sikariya and surrounding villages, most rural women have no independent income — their financial lives are entirely mediated through their husbands or fathers. Ananda Foundation's livelihood program changes that.</p>
+        <p>We train women in beekeeping — a skill that can be practised on their own land, produces a high-value product, requires minimal upfront investment, and builds pride. Alongside beekeeping, we offer vocational skills training in areas identified by the communities themselves.</p>
+
+        <h3>The Beekeeping Program</h3>
+        <div class="prog-how">
+          <div class="prog-how-item"><div class="prog-how-num">1</div><p><strong>Theory &amp; Safety Training</strong> — Women learn about bee biology, hive management, safe handling and seasonal patterns. Sessions led by trained practitioners.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">2</div><p><strong>Hands-on Practice</strong> — Women work directly with live hives, learning inspection, honey extraction and hive maintenance with protective equipment.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">3</div><p><strong>Hive Provisioning</strong> — Where funding allows, we support women with starter hives so they can begin producing from their own homes.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">4</div><p><strong>Market Linkage</strong> — We connect trained women with buyers and help them understand pricing, quality standards and basic business management.</p></div>
+        </div>
+
+        <div class="prog-stats">
+          <div class="prog-stat"><strong>100<sup style="font-size:.9rem">+</sup></strong><span>Women trained in beekeeping</span></div>
+          <div class="prog-stat"><strong>5<sup style="font-size:.9rem">+</sup></strong><span>Villages with active training groups</span></div>
+        </div>
+
+        <div class="prog-highlight"><p>"When a woman earns her own money for the first time, something changes in how she holds herself. Beekeeping does that — it is hers, from her land, in her hands."</p></div>
+        <div style="margin-top:24px"><a href="donate.html" class="btn btn-outline">Support this program →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM 3: FARMING -->
+<section id="farming" class="prog-section" style="background:var(--white)">
+  <div class="container">
+    <div class="prog-section-inner">
+      <div class="prog-photo fi">
+        <img src="../uploads/Screenshot%202026-05-11%20at%2011.48.06%20PM.png" alt="Ananda Masoor Dal — Organic Red Lentils">
+      </div>
+      <div class="prog-detail fi fi-d1">
+        <span class="tag">Enterprise Program</span>
+        <h2>Organic Farming &amp; Community Products</h2>
+        <p>Sikariya is an agricultural village. Almost every family farms — but most use chemical fertilisers and pesticides that degrade the soil, harm health, and cut into thin margins. Middlemen take most of the profit. The farmers who do the work earn the least.</p>
+        <p>Ananda Foundation's farming program flips this model. We train women farmers in organic practices, aggregate their produce, brand it under the Ananda name, and sell directly to end consumers. The profit goes back to the farmers — not intermediaries.</p>
+
+        <h3>Ananda Masoor Dal — Our Flagship Product</h3>
+        <p>Red lentils (masoor dal) grown organically in Sikariya — chemical-free, pesticide-free, and rich with the care of the women who grew them. Sold in 1kg packs under the Ananda Foundation brand, with a portion of every sale returned directly to the farming collective.</p>
+
+        <div class="prog-how">
+          <div class="prog-how-item"><div class="prog-how-num">1</div><p><strong>Organic Transition Training</strong> — Teaching women to farm without chemicals using compost, natural pest control and crop rotation. Better for soil, health and yield quality.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">2</div><p><strong>Collective Production</strong> — Women farm collectively on their own land, sharing knowledge and resources — reducing risk and increasing quality consistency.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">3</div><p><strong>Ananda Brand &amp; Market Access</strong> — Produce is packaged and sold as Ananda branded products, reaching urban consumers in Bihar and beyond who want ethically sourced food.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">4</div><p><strong>Profit Sharing</strong> — Revenue from product sales is split between the foundation's operational costs and direct payments to the women farmers who grew it.</p></div>
+        </div>
+
+        <div class="prog-stats">
+          <div class="prog-stat"><strong>100%</strong><span>Organic, chemical and pesticide free</span></div>
+          <div class="prog-stat"><strong>Direct</strong><span>Farm-to-consumer, no middlemen</span></div>
+        </div>
+        <div style="margin-top:24px"><a href="products.html" class="btn btn-outline">Buy Ananda Masoor Dal →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM 4: MEDICAL -->
+<section id="medical" class="prog-section" style="background:var(--cream)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start">
+      <div class="fi">
+        <span class="tag">Health &amp; Welfare</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,3vw,2.9rem);font-weight:400;color:var(--ink);margin:14px 0 20px">Medical Camps &amp; Community Health</h2>
+        <p style="line-height:1.85;margin-bottom:14px;color:var(--body)">Access to basic healthcare remains a serious challenge in Nawada district. Government hospitals are distant, understaffed and often unaffordable. Private clinics exist but are out of reach for most families. The result: preventable conditions go untreated. Women and children bear the greatest burden.</p>
+        <p style="line-height:1.85;margin-bottom:14px;color:var(--body)">Ananda Foundation organises periodic medical camps in Sikariya and surrounding villages, bringing qualified doctors and health workers directly into communities. These camps offer basic health check-ups, medicines, nutrition assessments and referrals for more serious conditions.</p>
+        <p style="line-height:1.85;margin-bottom:28px;color:var(--body)">The camps also serve as touchpoints for our broader health education work — connecting with families, identifying underserved households, and building the community's health literacy over time.</p>
+        <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--g800);margin-bottom:16px">What camps typically include</h3>
+        <div class="prog-how">
+          <div class="prog-how-item"><div class="prog-how-num">1</div><p><strong>General Health Check-ups</strong> — Blood pressure, blood sugar, basic physical examination for adults and children.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">2</div><p><strong>Medicine Distribution</strong> — Essential medicines distributed free to families who cannot afford them.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">3</div><p><strong>Nutrition Assessment</strong> — Screening for anaemia and malnutrition, particularly among women and children under five.</p></div>
+          <div class="prog-how-item"><div class="prog-how-num">4</div><p><strong>Referral &amp; Follow-up</strong> — Serious cases referred to appropriate facilities with the foundation's support in navigation.</p></div>
+        </div>
+      </div>
+      <div class="fi fi-d1">
+        <div style="background:white;border:1px solid var(--border);border-radius:3px;padding:28px">
+          <h4 style="font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:20px">Upcoming Programs</h4>
+          <div class="upcoming-grid" style="margin-top:0">
+            <div class="upcoming-card">
+              <span class="status">Launching 2026</span>
+              <h4>Pad Manufacturing Unit</h4>
+              <p>Community-owned sanitary pad unit — 80,000 pads/month, 10+ women employed. <a href="campaign.html" style="color:var(--g700)">See campaign →</a></p>
+            </div>
+            <div class="upcoming-card">
+              <span class="status">In Planning</span>
+              <h4>Organic Honey Production</h4>
+              <p>Scaling the beekeeping program into full honey extraction, bottling and sales — under the Ananda brand.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:24px;background:var(--g800);border-radius:3px;padding:28px">
+          <h4 style="font-family:var(--serif);font-size:1.2rem;font-weight:400;color:#e8edd8;margin-bottom:12px">Want to partner?</h4>
+          <p style="font-size:.87rem;color:rgba(232,237,216,.7);line-height:1.7;margin-bottom:20px">If you are a doctor, health worker, or organisation wanting to run a medical camp with us, we would love to hear from you.</p>
+          <a href="mailto:info@anandafoundation.in" class="btn btn-cream" style="font-size:.82rem;padding:10px 20px">Get in Touch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"><p>Empowering communities, enriching lives. Working in tribal and rural Bihar since 2019.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="impact.html">Impact</a></li></ul></div>
+    <div class="footer-col"><h5>More</h5><ul><li><a href="campaign.html">Campaign</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="news.html">News</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:info@anandafoundation.in">info@anandafoundation.in</a></li><li><a href="#">www.anandafoundation.in</a></li><li><a href="#">Sikariya, Nawada, Bihar 805126</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ananda Foundation. All rights reserved.</p><p class="footer-reg">PAN: AAJTA7839C · NGO Darpan: BR/2024/0392085</p></div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body></html>

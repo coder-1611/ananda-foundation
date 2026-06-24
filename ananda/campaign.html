@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pad Manufacturing Campaign — Ananda Foundation</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.campaign-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+.camp-left h2{font-family:var(--serif);font-size:clamp(2rem,3vw,2.9rem);font-weight:400;color:var(--ink);margin:12px 0 20px}
+.camp-left p{line-height:1.85;margin-bottom:14px;color:var(--body)}
+.fund-box{background:var(--g900);border-radius:6px;padding:32px;color:#e8edd8;margin-bottom:24px}
+.fund-box label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,237,216,.45)}
+.fund-box h3{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:#e8edd8;margin:6px 0 16px;line-height:1}
+.prog-bar-track{background:rgba(255,255,255,.1);border-radius:99px;height:6px}
+.prog-bar-fill{height:100%;border-radius:99px;background:var(--g500);width:0;transition:width 1.2s ease}
+.prog-bar-labels{display:flex;justify-content:space-between;font-size:.74rem;color:rgba(232,237,216,.4);margin-top:8px}
+.fund-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.fund-item{background:rgba(255,255,255,.06);border-radius:3px;padding:14px 16px}
+.fund-item label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,237,216,.4);display:block;margin-bottom:4px}
+.fund-item strong{font-family:var(--serif);font-size:1.4rem;color:#e8edd8;font-weight:300}
+.camp-right-img img{width:100%;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.15);margin-bottom:20px}
+
+/* WHY MATTERS */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{padding:28px;border:1px solid var(--border);border-radius:3px;background:white}
+.why-card .why-num{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--g300);line-height:1;margin-bottom:8px}
+.why-card h4{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:8px}
+.why-card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+
+/* PROJECTIONS TABLE */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.proj-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.proj-table th{background:var(--g900);color:#e8edd8;padding:14px 18px;text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.06em}
+.proj-table td{padding:14px 18px;border-bottom:1px solid var(--border);color:var(--body)}
+.proj-table tr:last-child td{border-bottom:none}
+.proj-table tr:nth-child(even) td{background:var(--warm)}
+.proj-table td.highlight{font-family:var(--serif);font-size:1.1rem;color:var(--g700);font-weight:400}
+
+/* HOW FUNDS USED */
+.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.use-item{background:white;border:1px solid var(--border);border-radius:3px;padding:24px}
+.use-item .pct{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--g500);line-height:1;margin-bottom:8px}
+.use-item h4{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:6px}
+.use-item p{font-size:.83rem;color:var(--muted);line-height:1.65}
+
+/* TIMELINE */
+.tl-horiz{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin:40px 0}
+.tl-horiz::before{content:'';position:absolute;top:16px;left:10%;right:10%;height:1.5px;background:var(--border)}
+.tl-step{text-align:center;position:relative;padding-top:0}
+.tl-step-dot{width:32px;height:32px;border-radius:50%;background:white;border:2px solid var(--border);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;font-size:.75rem;color:var(--muted);font-weight:500}
+.tl-step.done .tl-step-dot{background:var(--g700);border-color:var(--g700);color:white}
+.tl-step.active .tl-step-dot{background:var(--g500);border-color:var(--g500);color:white;box-shadow:0 0 0 4px rgba(90,154,58,.2)}
+.tl-step h5{font-size:.78rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+.tl-step p{font-size:.72rem;color:var(--muted);line-height:1.5}
+
+/* SOCIAL IMPACT */
+.social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.social-card{display:flex;gap:16px;padding:24px;background:white;border:1px solid var(--border);border-radius:3px}
+.social-icon{width:44px;height:44px;border-radius:50%;background:var(--g50);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.social-icon svg{width:20px;height:20px;stroke:var(--g700);fill:none;stroke-width:1.6}
+.social-card h4{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:6px}
+.social-card p{font-size:.85rem;color:var(--muted);line-height:1.68}
+
+@media(max-width:900px){
+  .campaign-hero,.why-grid,.use-grid,.social-grid{grid-template-columns:1fr}
+  .tl-horiz{grid-template-columns:1fr;gap:20px}
+  .tl-horiz::before{display:none}
+  .tl-step{text-align:left;display:flex;gap:16px;align-items:flex-start}
+  .tl-step-dot{margin:0;flex-shrink:0}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a><a href="campaign.html" class="active">Campaign</a><a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-bg" style="background-image:url('../uploads/New%20Updated%20Plan.png');opacity:.1"></div>
+  <div class="banner-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span>Campaign</span></div>
+    <span class="eyebrow eyebrow-light">Active Campaign · Launching August 2026</span>
+    <h1>Sanitary Pad<br>Manufacturing Unit</h1>
+    <p>We are raising €8,000 to install a pad manufacturing unit in Sikariya — creating employment for 10+ rural women and producing 80,000 affordable pads per month for the community.</p>
+  </div>
+</div>
+
+<!-- MAIN CAMPAIGN -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="campaign-hero">
+      <div class="fi">
+        <span class="eyebrow">The Campaign</span>
+        <h2 class="camp-left">Empowering women. Improving health. Building enterprise.</h2>
+        <div class="camp-left">
+          <p>In Sikariya and across rural Bihar, sanitary pads remain unaffordable and inaccessible for most women and girls. Market price is ₹8+ per pad — out of reach for daily agricultural labourers earning ₹200–300 per day. The result: women resort to cloth, ash, and other unsafe alternatives. Health consequences are serious and preventable.</p>
+          <p>Ananda Foundation is establishing a sanitary pad manufacturing unit in Sikariya — the organisation's own village — to change this. The unit will produce high-quality, cotton-based sanitary pads at ₹3 per pad — well below the market rate. And it will employ at least 10 rural women from day one, paying basic salary plus performance-based incentives.</p>
+          <p>This is not charity. It is a sustainable enterprise — one that will eventually sustain itself and generate surplus income for the foundation's other programs.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+          <a href="donate.html" class="btn btn-green btn-lg">Support This Campaign</a>
+          <a href="mailto:info@anandafoundation.in?subject=Pad%20Unit%20Proposal" class="btn btn-outline">Request Full Proposal</a>
+        </div>
+      </div>
+      <div class="fi fi-d1">
+        <div class="fund-box">
+          <label>Total Funding Goal</label>
+          <h3>€8,000</h3>
+          <div class="prog-bar-track"><div class="prog-bar-fill" id="pf"></div></div>
+          <div class="prog-bar-labels"><span>35% raised</span><span>€8,000 target</span></div>
+          <div class="fund-breakdown">
+            <div class="fund-item"><label>Raised so far</label><strong>~€2,800</strong></div>
+            <div class="fund-item"><label>Still needed</label><strong>~€5,200</strong></div>
+            <div class="fund-item"><label>Launch date</label><strong>Aug 2026</strong></div>
+            <div class="fund-item"><label>Status</label><strong>Active</strong></div>
+          </div>
+        </div>
+        <div class="camp-right-img">
+          <img src="../uploads/New%20Updated%20Plan.png" alt="Pad manufacturing unit project proposal">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS MATTERS -->
+<section class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-hdr section-hdr-center fi" style="margin-bottom:48px">
+      <span class="eyebrow">Why This Matters</span>
+      <h2 class="section-heading">Three problems. One solution.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fi">
+        <div class="why-num">01</div>
+        <h4>Unaffordable pads = missed school days</h4>
+        <p>Girls in rural Bihar miss 3–5 school days per month during menstruation. Not because of pain — but because they have no safe, affordable sanitary products. At ₹3/pad vs ₹8+ in shops, the Ananda unit makes the difference between attending and staying home.</p>
+      </div>
+      <div class="why-card fi fi-d1">
+        <div class="why-num">02</div>
+        <h4>No local employment for rural women</h4>
+        <p>Agricultural work is seasonal, back-breaking and controlled by men. The pad unit offers 10+ women stable, year-round employment with a basic salary and performance incentives — in their own village, close to their families, with dignity.</p>
+      </div>
+      <div class="why-card fi fi-d2">
+        <div class="why-num">03</div>
+        <h4>NGO dependency vs sustainable enterprise</h4>
+        <p>Ananda Foundation does not want to rely on donations forever. The pad unit will generate ₹80,000/month gross profit within its first year of full operation — a revenue stream that helps fund the foundation's other programs long-term.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTIONS TABLE -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-hdr fi" style="margin-bottom:40px">
+      <span class="eyebrow">Financial Projections</span>
+      <h2 class="section-heading">Monthly sales projection — at full production</h2>
+      <p class="section-sub">Conservative projections based on local market research. The unit will install in our own village — zero rent, minimal overhead.</p>
+    </div>
+    <div class="table-wrap fi fi-d1">
+      <table class="proj-table">
+        <thead>
+          <tr><th>Parameter</th><th>Per Day</th><th>Per Month</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Production Capacity</td><td>2,000 pads</td><td>80,000 pads</td><td class="highlight">Full capacity</td></tr>
+          <tr><td>Selling Price</td><td>—</td><td>—</td><td class="highlight">₹3 per pad</td></tr>
+          <tr><td>Total Sales Revenue</td><td>₹6,000</td><td>₹2,40,000</td><td class="highlight">₹2.40 Lacs/month</td></tr>
+          <tr><td>Cost Price</td><td>—</td><td>—</td><td class="highlight">₹2 per pad</td></tr>
+          <tr><td>Total Production Cost</td><td>₹4,000</td><td>₹1,60,000</td><td class="highlight">₹1.60 Lacs/month</td></tr>
+          <tr style="background:var(--g50)"><td><strong>Gross Profit</strong></td><td><strong>₹2,000</strong></td><td><strong>₹80,000</strong></td><td class="highlight"><strong>₹0.80 Lacs/month</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.78rem;color:var(--muted);margin-top:12px;font-style:italic">* Profit before salary deductions, plant running costs and local taxes. Final net profit will depend on operational costs during ramp-up phase.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px">
+      <div class="fi" style="background:var(--g50);border-radius:3px;padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--g700);line-height:1">₹3</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:8px">Selling price per pad<br>(vs ₹8+ in market)</div>
+      </div>
+      <div class="fi fi-d1" style="background:var(--g50);border-radius:3px;padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--g700);line-height:1">10<sup style="font-size:1.2rem">+</sup></div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:8px">Rural women employed<br>from day one</div>
+      </div>
+      <div class="fi fi-d2" style="background:var(--g50);border-radius:3px;padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--g700);line-height:1">0</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:8px">Rent cost<br>(own village land)</div>
+      </div>
+      <div class="fi fi-d3" style="background:var(--g50);border-radius:3px;padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--g700);line-height:1">₹80k</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:8px">Gross profit/month<br>at full production</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW FUNDS WILL BE USED -->
+<section class="section-pad" style="background:var(--warm)">
+  <div class="container">
+    <div class="section-hdr fi" style="margin-bottom:48px">
+      <span class="eyebrow">Where Your Money Goes</span>
+      <h2 class="section-heading">How the €8,000 will be spent</h2>
+      <p class="section-sub">Every euro is accounted for. Here is the breakdown of how the funds will be used to get the unit operational.</p>
+    </div>
+    <div class="use-grid">
+      <div class="use-item fi"><div class="pct">45%</div><h4>Manufacturing Equipment</h4><p>Core pad-making machinery — pad forming unit, heat sealing equipment, and quality testing tools sourced from certified Indian manufacturers.</p></div>
+      <div class="use-item fi fi-d1"><div class="pct">20%</div><h4>Raw Materials (First Batch)</h4><p>Initial stock of cotton, absorbent core material, packaging film and back-sheet. Sufficient for the first 2–3 months of production.</p></div>
+      <div class="use-item fi fi-d2"><div class="pct">15%</div><h4>Training &amp; Capacity Building</h4><p>Training the 10 initial women employees — machine operation, quality control, hygiene standards, basic bookkeeping and workplace safety.</p></div>
+      <div class="use-item fi fi-d1"><div class="pct">10%</div><h4>Setup &amp; Infrastructure</h4><p>Minor infrastructure work to prepare the production space — electrical fittings, ventilation, shelving and storage within our own village property.</p></div>
+      <div class="use-item fi fi-d2"><div class="pct">7%</div><h4>Distribution &amp; Marketing</h4><p>Initial distribution network setup — school outreach, self-help group partnerships, health centre connections across Nawada district.</p></div>
+      <div class="use-item fi fi-d3"><div class="pct">3%</div><h4>Contingency Reserve</h4><p>A small operational buffer to handle unexpected costs during the ramp-up phase — typically machine repairs or material price fluctuations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT TIMELINE -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-hdr fi" style="margin-bottom:48px">
+      <span class="eyebrow">Project Timeline</span>
+      <h2 class="section-heading">From fundraising to first pad</h2>
+    </div>
+    <div class="tl-horiz fi fi-d1">
+      <div class="tl-step done"><div class="tl-step-dot">✓</div><div><h5>Foundation Registered</h5><p>Aug 2022 · PAN &amp; NGO Darpan</p></div></div>
+      <div class="tl-step done"><div class="tl-step-dot">✓</div><div><h5>Community Consultation</h5><p>2023–24 · Need confirmed</p></div></div>
+      <div class="tl-step active"><div class="tl-step-dot">→</div><div><h5>Fundraising Active</h5><p>2025–26 · €8,000 target</p></div></div>
+      <div class="tl-step"><div class="tl-step-dot">4</div><div><h5>Equipment &amp; Setup</h5><p>Jun–Jul 2026 · Installation</p></div></div>
+      <div class="tl-step"><div class="tl-step-dot">5</div><div><h5>Production Launch</h5><p>August 2026 · First pads</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL IMPACT -->
+<section class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-hdr fi" style="margin-bottom:48px">
+      <span class="eyebrow">Social Impact</span>
+      <h2 class="section-heading">Beyond the numbers</h2>
+    </div>
+    <div class="social-grid">
+      <div class="social-card fi">
+        <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div><h4>Women's Economic Empowerment</h4><p>10+ women employed with stable wages, performance bonuses, and the dignity of formal employment — a first for most families in Sikariya.</p></div>
+      </div>
+      <div class="social-card fi fi-d1">
+        <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div><h4>Improved School Attendance</h4><p>Affordable pads mean girls can attend school without interruption during menstruation — directly improving education outcomes and reducing gender gaps.</p></div>
+      </div>
+      <div class="social-card fi fi-d2">
+        <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l3 3 6-6M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg></div>
+        <div><h4>Reduced Health Risks</h4><p>Unsafe menstrual hygiene practices are linked to infections and long-term reproductive health problems. Affordable, high-quality pads directly reduce these risks.</p></div>
+      </div>
+      <div class="social-card fi fi-d3">
+        <div class="social-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div><h4>Sustainable Rural Economy</h4><p>A community-owned enterprise producing an essential product — this is the model for rural economic development that builds long-term resilience, not short-term aid.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE CTA -->
+<section style="background:var(--g800);padding:88px 28px;text-align:center">
+  <div style="max-width:560px;margin:0 auto">
+    <span class="eyebrow" style="color:var(--g200)">Help Make This Happen</span>
+    <h2 style="font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:400;color:#e8edd8;margin:14px 0 18px;line-height:1.1">€5,200 still needed.<br>Launch in August 2026.</h2>
+    <p style="color:rgba(232,237,216,.78);line-height:1.8;margin-bottom:40px">Every €100 brings us closer to the first pad rolling off the production line — made by a woman in Sikariya, for a girl in a school in Nawada.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="donate.html" class="btn btn-cream btn-lg">Donate Now →</a>
+      <a href="mailto:info@anandafoundation.in?subject=Pad%20Unit%20Partnership" class="btn btn-ghost btn-lg">Partner With Us</a>
+    </div>
+    <p style="font-size:.78rem;color:rgba(232,237,216,.35);margin-top:24px">For bank transfer or large donation enquiries, write to info@anandafoundation.in</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"><p>Empowering communities, enriching lives. Working in tribal and rural Bihar since 2019.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="impact.html">Impact</a></li></ul></div>
+    <div class="footer-col"><h5>More</h5><ul><li><a href="campaign.html">Campaign</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="news.html">News</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:info@anandafoundation.in">info@anandafoundation.in</a></li><li><a href="#">www.anandafoundation.in</a></li><li><a href="#">Sikariya, Nawada, Bihar 805126</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ananda Foundation. All rights reserved.</p><p class="footer-reg">PAN: AAJTA7839C · NGO Darpan: BR/2024/0392085</p></div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+const pf=document.getElementById('pf');
+if(pf){const pio=new IntersectionObserver(e=>{if(e[0].isIntersecting){pf.style.width='35%';pio.disconnect()}});pio.observe(pf)}
+</script>
+</body></html>

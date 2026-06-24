@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Products — Ananda Foundation</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.product-hero{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
+.product-hero img{width:100%;border-radius:6px;box-shadow:0 24px 72px rgba(0,0,0,.12)}
+.prod-detail .eyebrow{margin-bottom:14px}
+.prod-detail h2{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:400;color:var(--ink);margin-bottom:20px;line-height:1.15}
+.prod-detail p{line-height:1.85;margin-bottom:14px;color:var(--body)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}
+.badge{display:inline-block;padding:6px 14px;border-radius:99px;font-size:.76rem;font-weight:500}
+.badge-green{background:var(--g50);color:var(--g700)}
+.badge-cream{background:var(--cream);color:var(--body)}
+.order-box{background:var(--g50);border:1px solid var(--border);border-radius:6px;padding:32px;margin-top:32px}
+.order-box h4{font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--ink);margin-bottom:14px}
+.order-box p{font-size:.89rem;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.order-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* STORY STRIP */
+.story-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border)}
+.story-step{background:white;padding:36px 28px}
+.story-step .step-num{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--g200);line-height:1;margin-bottom:12px}
+.story-step h4{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:8px}
+.story-step p{font-size:.87rem;color:var(--muted);line-height:1.7}
+
+/* NUTRITION */
+.nutrition-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.nutrition-table{width:100%;border-collapse:collapse}
+.nutrition-table th{background:var(--g800);color:#e8edd8;padding:12px 16px;text-align:left;font-size:.8rem;font-weight:500}
+.nutrition-table td{padding:11px 16px;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--body)}
+.nutrition-table tr:last-child td{border-bottom:none}
+.nutrition-table tr:nth-child(even) td{background:var(--warm)}
+.nutri-text h3{font-family:var(--serif);font-size:1.6rem;font-weight:400;color:var(--ink);margin:12px 0 16px}
+.nutri-text p{line-height:1.82;font-size:.97rem;color:var(--body);margin-bottom:14px}
+.nutri-points{margin:20px 0}
+.nutri-point{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.nutri-point::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--g500);margin-top:7px;flex-shrink:0}
+.nutri-point p{font-size:.88rem;color:var(--body);line-height:1.6;margin:0}
+
+/* COMING SOON */
+.coming-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.coming-card{border:1px solid var(--border);border-radius:3px;overflow:hidden;background:white}
+.coming-card-img{height:200px;background:var(--g50);display:flex;align-items:center;justify-content:center;position:relative}
+.coming-card-img img{width:100%;height:100%;object-fit:cover}
+.coming-badge{position:absolute;top:12px;left:12px;background:var(--g800);color:#e8edd8;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
+.coming-body{padding:22px}
+.coming-body h4{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:8px}
+.coming-body p{font-size:.86rem;color:var(--muted);line-height:1.68}
+
+/* WHY BUY */
+.why-buy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.why-buy-item{text-align:center;padding:28px 16px}
+.why-buy-icon{width:52px;height:52px;border-radius:50%;background:var(--g50);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.why-buy-icon svg{width:22px;height:22px;stroke:var(--g700);fill:none;stroke-width:1.6}
+.why-buy-item h4{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:6px}
+.why-buy-item p{font-size:.83rem;color:var(--muted);line-height:1.65}
+
+@media(max-width:900px){
+  .product-hero,.nutrition-grid{grid-template-columns:1fr;gap:40px}
+  .story-strip,.coming-grid,.why-buy-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .coming-grid{grid-template-columns:1fr 1fr}
+  .why-buy-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a><a href="campaign.html">Campaign</a><a href="products.html" class="active">Products</a>
+      <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-bg" style="background-image:url('../uploads/Screenshot%202026-05-11%20at%2011.48.06%20PM.png')"></div>
+  <div class="banner-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span>Products</span></div>
+    <span class="eyebrow eyebrow-light">Social Enterprise</span>
+    <h1>Our Products</h1>
+    <p>Every product you buy from Ananda Foundation is grown or made by women in Sikariya village — and every rupee of profit goes back to them. Shopping here is solidarity.</p>
+  </div>
+</div>
+
+<!-- WHY WE MAKE PRODUCTS -->
+<section class="section-pad-sm" style="background:var(--g900);color:#e8edd8">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px">
+      <div class="fi">
+        <div style="font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--g300);margin-bottom:10px">"</div>
+        <p style="font-family:var(--serif);font-size:1.1rem;font-style:italic;color:#e8edd8;line-height:1.65">We do not want to rely on donations forever. Products create sustainable income — for the women who make them and for the foundation that supports them.</p>
+      </div>
+      <div class="fi fi-d1" style="border-left:1px solid rgba(255,255,255,.1);padding-left:48px">
+        <h4 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:#e8edd8;margin-bottom:10px">Mission-driven enterprise</h4>
+        <p style="font-size:.87rem;color:rgba(232,237,216,.65);line-height:1.75">Our products are not fundraising gimmicks. They are real goods, grown and made by real people, with genuine quality standards. We are building a brand that stands for honesty.</p>
+      </div>
+      <div class="fi fi-d2" style="border-left:1px solid rgba(255,255,255,.1);padding-left:48px">
+        <h4 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:#e8edd8;margin-bottom:10px">Profit stays in the village</h4>
+        <p style="font-size:.87rem;color:rgba(232,237,216,.65);line-height:1.75">No middlemen. No corporate markup. Revenue from Ananda products is split between the farming collective (who grew it) and the foundation's operational costs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MASOOR DAL -->
+<section id="masoor-dal" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="product-hero">
+      <div class="fi"><img src="../uploads/Screenshot%202026-05-11%20at%2011.48.06%20PM.png" alt="Ananda Masoor Dal — Organic Red Lentils 1kg"></div>
+      <div class="prod-detail fi fi-d1">
+        <span class="eyebrow">Available Now</span>
+        <h2>Ananda Masoor Dal</h2>
+        <p style="font-size:1.05rem;font-style:italic;font-family:var(--serif);color:var(--g800);margin-bottom:16px">Organic · Pure · Nutritious · 1kg</p>
+        <p>Red lentils (masoor dal) grown organically in Sikariya village, Nawada, Bihar. Chemical-free, pesticide-free, and cultivated by women farmers who have been growing dal on this land for generations.</p>
+        <p>Unlike commercial dal that passes through 4–5 middlemen before reaching you, Ananda Masoor Dal goes directly from farm to your kitchen. The women who grew it receive a fair share of every sale — not the ₹15–20/kg that most small farmers receive, but a meaningful, direct income.</p>
+        <div class="badges">
+          <span class="badge badge-green">100% Organic</span>
+          <span class="badge badge-green">Chemical Free</span>
+          <span class="badge badge-green">Pesticide Free</span>
+          <span class="badge badge-cream">1 kg Pack</span>
+          <span class="badge badge-cream">Sustainably Grown</span>
+          <span class="badge badge-cream">100% Veg</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0">
+          <div style="background:var(--warm);border:1px solid var(--border);border-radius:3px;padding:14px 16px">
+            <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Origin</div>
+            <div style="font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin-top:3px">Sikariya, Nawada, Bihar</div>
+          </div>
+          <div style="background:var(--warm);border:1px solid var(--border);border-radius:3px;padding:14px 16px">
+            <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Net Weight</div>
+            <div style="font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin-top:3px">1 Kilogram</div>
+          </div>
+          <div style="background:var(--warm);border:1px solid var(--border);border-radius:3px;padding:14px 16px">
+            <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Farming Method</div>
+            <div style="font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin-top:3px">Organic, no chemicals</div>
+          </div>
+          <div style="background:var(--warm);border:1px solid var(--border);border-radius:3px;padding:14px 16px">
+            <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Grown By</div>
+            <div style="font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin-top:3px">Women farmers, Sikariya</div>
+          </div>
+        </div>
+        <div class="order-box">
+          <h4>How to Order</h4>
+          <p>We currently take orders directly via email or phone. Write to us with your quantity and delivery address, and we will get back to you within 24 hours with pricing and logistics.</p>
+          <div class="order-actions">
+            <a href="mailto:info@anandafoundation.in?subject=Order%20Ananda%20Masoor%20Dal" class="btn btn-green">Order via Email</a>
+            <a href="https://www.linkedin.com/in/ananddeo11/" target="_blank" class="btn btn-outline">Message on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE STORY -->
+<section class="section-pad-sm" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-hdr section-hdr-center fi" style="margin-bottom:40px">
+      <span class="eyebrow">From Seed to Table</span>
+      <h2 class="section-heading">How Ananda Dal gets to you</h2>
+    </div>
+    <div class="story-strip fi fi-d1">
+      <div class="story-step"><div class="step-num">01</div><h4>Women sow the seeds</h4><p>Women farmers in Sikariya prepare their land using traditional, chemical-free methods. Compost, natural pest control, and careful water management — practices passed down through generations.</p></div>
+      <div class="story-step"><div class="step-num">02</div><h4>Organic cultivation</h4><p>Over 3–4 months, the masoor crop grows without a single chemical input. No fertilisers, no pesticides. The soil stays healthy; the crop is pure.</p></div>
+      <div class="story-step"><div class="step-num">03</div><h4>Harvest &amp; quality check</h4><p>At harvest, the collective comes together — sorting, cleaning, and checking every batch by hand. Quality is personal here; these are their names on the bag.</p></div>
+    </div>
+    <div class="story-strip fi fi-d2" style="border-top:1px solid var(--border)">
+      <div class="story-step"><div class="step-num">04</div><h4>Packaged by the Ananda team</h4><p>Dal is packed in 1kg sealed bags under the Ananda Foundation brand — with full transparency about origin, farming method, and the collective that grew it.</p></div>
+      <div class="story-step"><div class="step-num">05</div><h4>Sold direct to consumers</h4><p>No middlemen. No wholesale markup. Ananda Dal is sold directly to end consumers via the foundation's network — keeping prices fair and margins with the farmers.</p></div>
+      <div class="story-step"><div class="step-num">06</div><h4>Profit shared directly</h4><p>A fixed percentage of every sale goes directly back to the farming collective. The rest covers the foundation's packaging, distribution and operational costs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRITION -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="nutrition-grid">
+      <div class="fi">
+        <span class="eyebrow">Nutritional Value</span>
+        <div class="nutri-text">
+          <h3>Why masoor dal?</h3>
+          <p>Masoor dal (red lentils) is one of the most nutritious staples in the Indian diet — high in protein, iron, and fibre. For rural families where meat is expensive, dal is often the primary protein source.</p>
+          <p>Our organic masoor dal contains no chemical residue — so you get the full nutritional benefit without the health risks associated with pesticide-heavy commercial alternatives.</p>
+        </div>
+        <div class="nutri-points">
+          <div class="nutri-point"><p><strong>High in protein</strong> — 25g protein per 100g. Essential for vegetarian diets and growing children.</p></div>
+          <div class="nutri-point"><p><strong>Rich in iron</strong> — Important for preventing anaemia, particularly in women and girls in rural India.</p></div>
+          <div class="nutri-point"><p><strong>High fibre</strong> — Supports digestive health and keeps you feeling full longer.</p></div>
+          <div class="nutri-point"><p><strong>No chemicals</strong> — Our organic growing method means zero pesticide residue in your food.</p></div>
+        </div>
+      </div>
+      <div class="fi fi-d1">
+        <table class="nutrition-table">
+          <thead><tr><th>Nutrient</th><th>Per 100g</th></tr></thead>
+          <tbody>
+            <tr><td>Energy</td><td>353 kcal</td></tr>
+            <tr><td>Protein</td><td>25g</td></tr>
+            <tr><td>Carbohydrates</td><td>60g</td></tr>
+            <tr><td>Dietary Fibre</td><td>11g</td></tr>
+            <tr><td>Total Fat</td><td>1.1g</td></tr>
+            <tr><td>Iron</td><td>7.6mg</td></tr>
+            <tr><td>Folate</td><td>479μg</td></tr>
+            <tr><td>Potassium</td><td>677mg</td></tr>
+            <tr><td>Magnesium</td><td>122mg</td></tr>
+            <tr><td>Sodium</td><td>Minimal (natural)</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.74rem;color:var(--muted);margin-top:10px;font-style:italic">*Approximate values. Actual content may vary by batch and growing season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY BUY -->
+<section class="section-pad-sm" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-hdr section-hdr-center fi" style="margin-bottom:40px">
+      <span class="eyebrow">Why Buy Ananda</span>
+      <h2 class="section-heading">Good for you. Good for farmers.<br>Good for our future.</h2>
+    </div>
+    <div class="why-buy-grid fi fi-d1">
+      <div class="why-buy-item"><div class="why-buy-icon"><svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Pure &amp; Organic</h4><p>Zero chemicals. Zero pesticides. Just dal, grown the way it should be.</p></div>
+      <div class="why-buy-item"><div class="why-buy-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h4>Farmer-Owned</h4><p>Profit goes directly to the women who grew your food — not to corporations.</p></div>
+      <div class="why-buy-item"><div class="why-buy-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h4>Village-to-Table</h4><p>Grown in Sikariya, Bihar. No long supply chains, no middlemen taking the margin.</p></div>
+      <div class="why-buy-item"><div class="why-buy-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h4>Mission-Backed</h4><p>Your purchase funds beekeeping training, health camps and the pad unit too.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-hdr fi" style="margin-bottom:48px">
+      <span class="eyebrow">Coming Soon</span>
+      <h2 class="section-heading">More products in the pipeline</h2>
+      <p class="section-sub">As our programs grow, so does our product range. Every new product creates new income for women in Sikariya.</p>
+    </div>
+    <div class="coming-grid">
+      <div class="coming-card fi">
+        <div class="coming-card-img" style="background:var(--cream)">
+          <div style="text-align:center;padding:32px">
+            <div style="font-size:3rem">🍯</div>
+            <div style="font-family:var(--serif);font-size:1.1rem;color:var(--g800);margin-top:8px">Organic Honey</div>
+          </div>
+          <span class="coming-badge">Coming 2026</span>
+        </div>
+        <div class="coming-body">
+          <h4>Ananda Organic Honey</h4>
+          <p>Harvested by the women trained in our beekeeping program — raw, unprocessed, free from additives. Direct from the hives of Sikariya to your home.</p>
+        </div>
+      </div>
+      <div class="coming-card fi fi-d1">
+        <div class="coming-card-img" style="background:var(--g50)">
+          <div style="text-align:center;padding:32px">
+            <div style="font-size:3rem">🩹</div>
+            <div style="font-family:var(--serif);font-size:1.1rem;color:var(--g800);margin-top:8px">Ananda Sanitary Pads</div>
+          </div>
+          <span class="coming-badge">Launching Aug 2026</span>
+        </div>
+        <div class="coming-body">
+          <h4>Ananda Sanitary Pads</h4>
+          <p>Made in Sikariya by women in our pad manufacturing unit — high-quality, cotton-based pads at ₹3/pad. Affordable, dignified, community-made. <a href="campaign.html" style="color:var(--g700)">Support the campaign →</a></p>
+        </div>
+      </div>
+      <div class="coming-card fi fi-d2">
+        <div class="coming-card-img" style="background:var(--cream)">
+          <div style="text-align:center;padding:32px">
+            <div style="font-size:3rem">🌾</div>
+            <div style="font-family:var(--serif);font-size:1.1rem;color:var(--g800);margin-top:8px">More Organic Produce</div>
+          </div>
+          <span class="coming-badge">In Planning</span>
+        </div>
+        <div class="coming-body">
+          <h4>Seasonal Organic Produce</h4>
+          <p>As our farming collective grows, we plan to expand to other seasonal crops — mustard, arhar dal, and vegetables grown by women in Sikariya and neighbouring villages.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--g700);padding:72px 28px;text-align:center">
+  <div style="max-width:500px;margin:0 auto">
+    <span class="eyebrow" style="color:var(--g100)">Order Today</span>
+    <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:400;color:#e8edd8;margin:14px 0 18px">Good for you. Good for farmers.<br>Good for our future.</h2>
+    <a href="mailto:info@anandafoundation.in?subject=Order%20Ananda%20Products" class="btn btn-cream btn-lg">Order Masoor Dal →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand"><img src="../uploads/Screenshot%202024-07-28%20at%205.15.52%20PM.png" alt="Ananda Foundation"><p>Empowering communities, enriching lives. Working in tribal and rural Bihar since 2019.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="impact.html">Impact</a></li></ul></div>
+    <div class="footer-col"><h5>More</h5><ul><li><a href="campaign.html">Campaign</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="news.html">News</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:info@anandafoundation.in">info@anandafoundation.in</a></li><li><a href="#">www.anandafoundation.in</a></li><li><a href="#">Sikariya, Nawada, Bihar 805126</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ananda Foundation. All rights reserved.</p><p class="footer-reg">PAN: AAJTA7839C · NGO Darpan: BR/2024/0392085</p></div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body></html>
