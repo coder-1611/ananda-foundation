@@ -91,6 +91,7 @@ footer{background:var(--g900);padding:72px 28px 32px;color:rgba(232,237,216,.65)
 .footer-bottom{max-width:1160px;margin:24px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-bottom p{font-size:.78rem}
 .footer-reg{font-size:.72rem;color:rgba(232,237,216,.3)}
+.footer-made{max-width:1160px;margin:14px auto 0;text-align:center;font-size:.72rem;letter-spacing:.04em;color:rgba(232,237,216,.35)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1000px){.nav-links{display:none}}
