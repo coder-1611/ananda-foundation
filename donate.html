@@ -146,9 +146,9 @@
         <div class="campaign-callout fi fi-d1">
           <div>
             <h4>Active Campaign: Pad Manufacturing Unit</h4>
-            <p>We are 35% of the way to our €8,000 goal. Your donation today directly funds this campaign.</p>
+            <p>We are 50% of the way to our €10,000 goal. Your donation today directly funds this campaign.</p>
             <div class="prog-bar-track"><div class="prog-bar-fill" id="pf"></div></div>
-            <div class="prog-bar-labels"><span>35% raised · ~€2,800</span><span>€8,000 goal</span></div>
+            <div class="prog-bar-labels"><span>50% raised · ~€5,000</span><span>€10,000 goal</span></div>
           </div>
           <a href="campaign.html" class="btn btn-cream" style="white-space:nowrap">Campaign Details →</a>
         </div>
@@ -300,7 +300,7 @@ function handleDonate(){
 
 // Progress bar
 const pf=document.getElementById('pf');
-if(pf){const pio=new IntersectionObserver(e=>{if(e[0].isIntersecting){pf.style.width='35%';pio.disconnect()}});pio.observe(pf)}
+if(pf){const pio=new IntersectionObserver(e=>{if(e[0].isIntersecting){pf.style.width='50%';pio.disconnect()}});pio.observe(pf)}
 
 // FAQs
 document.querySelectorAll('.faq-q').forEach(q=>{
