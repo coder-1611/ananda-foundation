@@ -5,3 +5,7 @@
 .DS_Store
 # Unreferenced working scraps
 scraps/
+# Raw export drop containing SENSITIVE docs (PAN, recommendation letters,
+# annual reports, .docx). Never commit. Only the 8 referenced site images
+# live in the top-level uploads/ folder.
+ananda/uploads/
