@@ -136,6 +136,18 @@
       <a href="news.html">News</a>
       <a href="donate.html" class="nav-cta">Donate</a>
     </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="impact.html">Impact</a>
+    <a href="campaign.html">Campaign</a>
+    <a href="products.html">Products</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="news.html">News</a>
+    <a href="donate.html" class="nav-mobile-cta">Donate</a>
   </div>
 </nav>
 
@@ -362,6 +374,10 @@ document.querySelectorAll('.fi').forEach(el=>io.observe(el));
 document.querySelectorAll('.hero-content .fi,.pillars .fi').forEach(el=>setTimeout(()=>el.classList.add('vis'),100));
 const pf=document.getElementById('pf');
 if(pf){const pio=new IntersectionObserver(e=>{if(e[0].isIntersecting){pf.style.width='50%';pio.disconnect()}});pio.observe(pf)}
+const navToggle=document.getElementById('nav-toggle');
+const navMobile=document.getElementById('nav-mobile');
+navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');navMobile.classList.toggle('open')});
+navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navToggle.classList.remove('open');navMobile.classList.remove('open')}));
 </script>
 </body>
 </html>

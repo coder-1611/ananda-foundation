@@ -61,6 +61,9 @@
 @media(max-width:900px){
   .product-hero,.nutrition-grid{grid-template-columns:1fr;gap:40px}
   .story-strip,.coming-grid,.why-buy-grid{grid-template-columns:1fr}
+  .prod-mission-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .prod-mission-grid>*{border-left:none!important;padding-left:0!important;border-top:1px solid rgba(255,255,255,.1);padding-top:28px!important}
+  .prod-mission-grid>*:first-child{border-top:none;padding-top:0!important}
 }
 @media(max-width:600px){
   .coming-grid{grid-template-columns:1fr 1fr}
@@ -77,6 +80,18 @@
       <a href="impact.html">Impact</a><a href="campaign.html">Campaign</a><a href="products.html" class="active">Products</a>
       <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta">Donate</a>
     </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="impact.html">Impact</a>
+    <a href="campaign.html">Campaign</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="news.html">News</a>
+    <a href="donate.html" class="nav-mobile-cta">Donate</a>
   </div>
 </nav>
 
@@ -93,7 +108,7 @@
 <!-- WHY WE MAKE PRODUCTS -->
 <section class="section-pad-sm" style="background:var(--g900);color:#e8edd8">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px">
+    <div class="prod-mission-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px">
       <div class="fi">
         <div style="font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--g300);margin-bottom:10px">"</div>
         <p style="font-family:var(--serif);font-size:1.1rem;font-style:italic;color:#e8edd8;line-height:1.65">We do not want to rely on donations forever. Products create sustainable income — for the women who make them and for the foundation that supports them.</p>
@@ -311,5 +326,9 @@ const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
 document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+const navToggle=document.getElementById('nav-toggle');
+const navMobile=document.getElementById('nav-mobile');
+navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');navMobile.classList.toggle('open')});
+navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navToggle.classList.remove('open');navMobile.classList.remove('open')}));
 </script>
 </body></html>

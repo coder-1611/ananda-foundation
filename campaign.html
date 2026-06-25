@@ -67,6 +67,10 @@
   .tl-horiz::before{display:none}
   .tl-step{text-align:left;display:flex;gap:16px;align-items:flex-start}
   .tl-step-dot{margin:0;flex-shrink:0}
+  .camp-stats-grid{grid-template-columns:repeat(2,1fr)!important}
+}
+@media(max-width:500px){
+  .camp-stats-grid{grid-template-columns:1fr 1fr!important}
 }
 </style>
 </head>
@@ -79,6 +83,18 @@
       <a href="impact.html">Impact</a><a href="campaign.html" class="active">Campaign</a><a href="products.html">Products</a>
       <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="donate.html" class="nav-cta">Donate</a>
     </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="impact.html">Impact</a>
+    <a href="campaign.html" class="active">Campaign</a>
+    <a href="products.html">Products</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="news.html">News</a>
+    <a href="donate.html" class="nav-mobile-cta">Donate</a>
   </div>
 </nav>
 
@@ -182,7 +198,7 @@
     </div>
     <p style="font-size:.78rem;color:var(--muted);margin-top:12px;font-style:italic">* Profit before salary deductions, plant running costs and local taxes. Final net profit will depend on operational costs during ramp-up phase.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px">
+    <div class="camp-stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px">
       <div class="fi" style="background:var(--g50);border-radius:3px;padding:24px;text-align:center">
         <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--g700);line-height:1">₹3</div>
         <div style="font-size:.8rem;color:var(--muted);margin-top:8px">Selling price per pad<br>(vs ₹8+ in market)</div>
@@ -297,5 +313,9 @@ const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.targe
 document.querySelectorAll('.fi').forEach(el=>io.observe(el));
 const pf=document.getElementById('pf');
 if(pf){const pio=new IntersectionObserver(e=>{if(e[0].isIntersecting){pf.style.width='50%';pio.disconnect()}});pio.observe(pf)}
+const navToggle=document.getElementById('nav-toggle');
+const navMobile=document.getElementById('nav-mobile');
+navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');navMobile.classList.toggle('open')});
+navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navToggle.classList.remove('open');navMobile.classList.remove('open')}));
 </script>
 </body></html>

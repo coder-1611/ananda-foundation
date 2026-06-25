@@ -93,8 +93,21 @@ footer{background:var(--g900);padding:72px 28px 32px;color:rgba(232,237,216,.65)
 .footer-reg{font-size:.72rem;color:rgba(232,237,216,.3)}
 .footer-made{max-width:1160px;margin:14px auto 0;text-align:center;font-size:.72rem;letter-spacing:.04em;color:rgba(232,237,216,.35)}
 
+/* ── HAMBURGER / MOBILE NAV ── */
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:8px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:2px;background:rgba(232,237,216,.85);border-radius:1px;transition:transform .28s,opacity .28s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;background:var(--g900);border-top:1px solid rgba(255,255,255,.07);padding:8px 0 20px;overflow-y:auto;max-height:calc(100vh - 66px)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;padding:13px 24px;color:rgba(232,237,216,.78);font-size:.95rem;font-family:var(--sans);border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s,color .15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#e8edd8;background:rgba(255,255,255,.05)}
+.nav-mobile .nav-mobile-cta{margin:14px 20px 0;padding:13px 24px;border-radius:3px;border-bottom:none!important;background:rgba(232,237,216,.12);color:#e8edd8;text-align:center;font-weight:500}
+.nav-mobile .nav-mobile-cta:hover{background:rgba(232,237,216,.22)}
+
 /* ── RESPONSIVE ── */
-@media(max-width:1000px){.nav-links{display:none}}
+@media(max-width:1000px){.nav-links{display:none}.nav-toggle{display:flex}}
 @media(max-width:700px){
   .section-pad{padding:64px 0}
   .footer-top{grid-template-columns:1fr 1fr;gap:32px}
@@ -103,4 +116,12 @@ footer{background:var(--g900);padding:72px 28px 32px;color:rgba(232,237,216,.65)
 @media(max-width:500px){
   .footer-top{grid-template-columns:1fr}
   .btn-lg{padding:14px 28px}
+}
+@media(max-width:420px){
+  .container{padding:0 16px}
+  .nav-inner{padding:0 16px}
+  .banner-inner{padding:44px 16px 36px}
+  .section-pad{padding:52px 0}
+  .section-pad-sm{padding:40px 0}
+  .footer-bottom{flex-direction:column;text-align:center}
 }
