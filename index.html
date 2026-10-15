@@ -63,11 +63,24 @@
 .blockquote{border-left:3px solid var(--g500);padding-left:20px;margin:28px 0;font-family:var(--serif);font-size:1.22rem;font-style:italic;color:var(--g800);line-height:1.55}
 .blockquote cite{font-style:normal;font-family:var(--sans);font-size:.76rem;color:var(--muted);display:block;margin-top:8px}
 
-/* BOOK TEASER */
-.book-teaser{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:80px;align-items:center}
-.book-teaser-cover{display:flex;justify-content:center}
-.book-teaser-cover img{width:100%;max-width:320px;height:auto;border-radius:2px 4px 4px 2px;box-shadow:0 2px 4px rgba(0,0,0,.08),0 24px 64px rgba(24,46,9,.22);transition:transform .35s}
-.book-teaser-cover a:hover img{transform:translateY(-4px)}
+/* BOOK HERO — temporary: the book front and center (revert this commit to restore the original hero) */
+#book-hero{min-height:100vh;position:relative;display:flex;align-items:center;background:var(--g900);overflow:hidden}
+.bh-bg{position:absolute;inset:0;background:url('uploads/book-launch-un-geneva-group.jpg') center 40%/cover no-repeat;opacity:.28}
+.bh-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(18,42,8,.97) 0%,rgba(18,42,8,.86) 48%,rgba(18,42,8,.66) 100%)}
+.bh-inner{position:relative;z-index:1;width:100%;max-width:1160px;margin:0 auto;padding:126px 28px 80px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px;align-items:center}
+.bh-h1{font-family:var(--serif);font-size:clamp(3.2rem,7vw,6rem);font-weight:400;line-height:1;color:#e8edd8;margin:14px 0 12px}
+.bh-alt{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.5rem);color:var(--g200);margin-bottom:22px}
+.bh-sub{font-size:1.05rem;color:rgba(232,237,216,.82);max-width:520px;line-height:1.78;margin-bottom:36px}
+.bh-dates{display:flex;flex-wrap:wrap;gap:14px 36px;margin-top:44px;padding-top:24px;border-top:1px solid rgba(232,237,216,.14);font-size:.78rem;color:rgba(232,237,216,.55);letter-spacing:.04em}
+.bh-dates strong{display:block;font-weight:500;color:#e8edd8;font-size:.88rem;letter-spacing:0;margin-bottom:2px}
+.bh-cover{display:flex;justify-content:center}
+.bh-cover a{display:block;width:100%;max-width:400px;transition:transform .35s}
+.bh-cover a:hover{transform:translateY(-6px)}
+.bh-cover img{width:100%;height:auto;border-radius:2px 4px 4px 2px;box-shadow:0 34px 90px rgba(0,0,0,.55),0 4px 12px rgba(0,0,0,.3)}
+/* LAUNCH STRIP */
+.launch-strip{display:grid;grid-template-columns:2fr 1.35fr 1fr;gap:14px}
+.launch-strip img{width:100%;height:400px;object-fit:cover;border-radius:3px}
+.launch-hdr{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap}
 /* IMPACT NUMBERS */
 .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .impact-card{background:white;border:1px solid var(--border);border-radius:3px;padding:44px 20px;text-align:center;transition:transform .25s,box-shadow .25s}
@@ -132,8 +145,13 @@
 .section-hdr-center p{margin:0 auto}
 
 @media(max-width:900px){
-  .about-strip,.campaign-inner,.product-teaser,.book-teaser{grid-template-columns:1fr;gap:40px}
-  .book-teaser-cover img{max-width:240px}
+  .about-strip,.campaign-inner,.product-teaser{grid-template-columns:1fr;gap:40px}
+  .bh-inner{grid-template-columns:1fr;gap:40px;padding:104px 28px 64px}
+  .bh-cover{order:-1}
+  .bh-cover a{max-width:230px}
+  .launch-strip{grid-template-columns:1fr 1fr}
+  .launch-strip img:first-child{grid-column:1/-1}
+  .launch-strip img{height:300px}
   .impact-grid{grid-template-columns:repeat(2,1fr)}
   .prog-grid{grid-template-columns:1fr 1fr}
   .pillars-wrap{grid-template-columns:1fr}
@@ -183,20 +201,28 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <span class="eyebrow" style="color:var(--g200)">Sikariya, Nawada, Bihar — Since 2019</span>
-    <h1 class="hero-h1 fi">Empowering<br>Communities,<br>Enriching Lives</h1>
-    <p class="hero-sub fi fi-d1">Working alongside tribal and rural women in Bihar — building livelihoods, improving health, and letting communities guide every step.</p>
-    <div class="hero-actions fi fi-d2">
-      <a href="donate.html" class="btn btn-cream btn-lg">Donate Now</a>
-      <a href="about.html" class="btn btn-ghost btn-lg">Our Story →</a>
+<!-- BOOK HERO (temporary — the book front and center) -->
+<section id="book-hero">
+  <div class="bh-bg"></div>
+  <div class="bh-overlay"></div>
+  <div class="bh-inner">
+    <div>
+      <span class="eyebrow" style="color:var(--g200)">New Book · Launched at the United Nations, Geneva</span>
+      <h1 class="bh-h1 fi">Follow Your Heart</h1>
+      <p class="bh-alt fi">A memoir of choices, courage and compassion</p>
+      <p class="bh-sub fi fi-d1">Ananda Foundation's founder, Anand Priya Deo, tells the story of the road from Airtel and PepsiCo to the UN human rights office in Geneva — and home to Sikariya, where this foundation began.</p>
+      <div class="hero-actions fi fi-d2">
+        <a href="book.html" class="btn btn-cream btn-lg">Discover the Book</a>
+        <a href="https://www.amazon.in/dp/8167444708" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Buy on Amazon →</a>
+      </div>
+      <div class="bh-dates fi fi-d3">
+        <div><strong>Frankfurt Book Fair</strong>11 Oct 2026</div>
+        <div><strong>United Nations, Geneva</strong>13 Oct 2026</div>
+        <div><strong>Global Campus, Venice</strong>16 Oct 2026</div>
+      </div>
     </div>
+    <div class="bh-cover fi fi-d1"><a href="book.html"><img src="uploads/follow-your-heart-cover.jpg" alt="Cover of Follow Your Heart (Segui il Tuo Cuore) — A Memoir of Choices, Courage and Compassion, by Anand Priya Deo" width="715" height="1128" fetchpriority="high"></a></div>
   </div>
-  <div class="hero-scroll"><div class="hero-line"></div></div>
 </section>
 
 <!-- PILLARS -->
@@ -217,6 +243,25 @@
   </div>
 </div>
 
+<!-- BOOK LAUNCH STRIP (temporary) -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-hdr launch-hdr fi">
+      <div>
+        <span class="eyebrow">13 October 2026 · Geneva</span>
+        <h2 class="section-heading">Launched at the United Nations</h2>
+        <p class="section-sub">Anand presented <em>Follow Your Heart</em> at the UN premises in Geneva, with UN staff and former colleagues — two days after introducing it at the Frankfurt International Book Fair.</p>
+      </div>
+      <a href="book.html#launch" class="btn btn-outline">See the Launch →</a>
+    </div>
+    <div class="launch-strip fi">
+      <img src="uploads/book-launch-un-geneva-group.jpg" alt="Anand Priya Deo holding Follow Your Heart with UN staff and former colleagues at the Geneva launch" width="1600" height="1200" style="object-position:center 62%" loading="lazy">
+      <img src="uploads/book-launch-un-geneva-signing.jpg" alt="Anand Priya Deo presenting a copy of Follow Your Heart in Geneva" width="1600" height="1200" loading="lazy">
+      <img src="uploads/book-launch-un-geneva-reader.jpg" alt="Anand Priya Deo showing Follow Your Heart to a guest in Geneva" width="1100" height="1467" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section class="section-pad" style="background:var(--warm)">
   <div class="container">
@@ -234,25 +279,6 @@
         </div>
         <blockquote class="blockquote">"Change begins when you stay close to people's realities — and allow their needs to guide your work."<cite>— Anand Deo, Founder</cite></blockquote>
         <a href="about.html" class="btn btn-outline">Read Our Full Story →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BOOK TEASER -->
-<section class="section-pad" style="background:var(--white)">
-  <div class="container">
-    <div class="book-teaser">
-      <div class="book-teaser-cover fi"><a href="book.html"><img src="uploads/follow-your-heart-cover.jpg" alt="Cover of Follow Your Heart — A Memoir of Choices, Courage and Compassion, by Anand Priya Deo" width="715" height="1128" loading="lazy"></a></div>
-      <div class="fi fi-d1">
-        <span class="eyebrow">New Book · October 2026</span>
-        <h2 style="font-family:var(--serif);font-size:clamp(1.9rem,3vw,2.9rem);font-weight:400;color:var(--ink);margin-bottom:20px">Follow Your Heart — our founder's memoir</h2>
-        <p style="line-height:1.82;margin-bottom:14px;color:var(--body)">Anand Priya Deo's memoir traces the journey from corporate life at Airtel and PepsiCo to the UN human rights office in Geneva and development work across Africa and Southeast Asia — and back home to Sikariya, where Ananda Foundation was born.</p>
-        <p style="line-height:1.82;color:var(--body)">Launched at the Frankfurt International Book Fair and at the United Nations in Geneva in October 2026, with a book talk at the Global Campus of Human Rights in Venice on 16 October.</p>
-        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
-          <a href="book.html" class="btn btn-green">About the Book</a>
-          <a href="https://www.amazon.in/dp/8167444708" target="_blank" rel="noopener" class="btn btn-outline">Buy on Amazon →</a>
-        </div>
       </div>
     </div>
   </div>
