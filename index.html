@@ -63,6 +63,11 @@
 .blockquote{border-left:3px solid var(--g500);padding-left:20px;margin:28px 0;font-family:var(--serif);font-size:1.22rem;font-style:italic;color:var(--g800);line-height:1.55}
 .blockquote cite{font-style:normal;font-family:var(--sans);font-size:.76rem;color:var(--muted);display:block;margin-top:8px}
 
+/* BOOK TEASER */
+.book-teaser{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:80px;align-items:center}
+.book-teaser-cover{display:flex;justify-content:center}
+.book-teaser-cover img{width:100%;max-width:320px;height:auto;border-radius:2px 4px 4px 2px;box-shadow:0 2px 4px rgba(0,0,0,.08),0 24px 64px rgba(24,46,9,.22);transition:transform .35s}
+.book-teaser-cover a:hover img{transform:translateY(-4px)}
 /* IMPACT NUMBERS */
 .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .impact-card{background:white;border:1px solid var(--border);border-radius:3px;padding:44px 20px;text-align:center;transition:transform .25s,box-shadow .25s}
@@ -127,7 +132,8 @@
 .section-hdr-center p{margin:0 auto}
 
 @media(max-width:900px){
-  .about-strip,.campaign-inner,.product-teaser{grid-template-columns:1fr;gap:40px}
+  .about-strip,.campaign-inner,.product-teaser,.book-teaser{grid-template-columns:1fr;gap:40px}
+  .book-teaser-cover img{max-width:240px}
   .impact-grid{grid-template-columns:repeat(2,1fr)}
   .prog-grid{grid-template-columns:1fr 1fr}
   .pillars-wrap{grid-template-columns:1fr}
@@ -226,6 +232,25 @@
         </div>
         <blockquote class="blockquote">"Change begins when you stay close to people's realities — and allow their needs to guide your work."<cite>— Anand Deo, Founder</cite></blockquote>
         <a href="about.html" class="btn btn-outline">Read Our Full Story →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK TEASER -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="book-teaser">
+      <div class="book-teaser-cover fi"><a href="news.html#book"><img src="uploads/follow-your-heart-cover.jpg" alt="Cover of Follow Your Heart — A Memoir of Choices, Courage and Compassion, by Anand Priya Deo" width="715" height="1128" loading="lazy"></a></div>
+      <div class="fi fi-d1">
+        <span class="eyebrow">New Book · October 2026</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(1.9rem,3vw,2.9rem);font-weight:400;color:var(--ink);margin-bottom:20px">Follow Your Heart — our founder's memoir</h2>
+        <p style="line-height:1.82;margin-bottom:14px;color:var(--body)">Anand Priya Deo's memoir traces the journey from corporate life at Airtel and PepsiCo to the UN human rights office in Geneva and development work across Africa and Southeast Asia — and back home to Sikariya, where Ananda Foundation was born.</p>
+        <p style="line-height:1.82;color:var(--body)">Launched at the Frankfurt International Book Fair and at the United Nations in Geneva in October 2026, with a book talk at the Global Campus of Human Rights in Venice on 16 October.</p>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="news.html#book" class="btn btn-green">About the Book</a>
+          <a href="https://www.amazon.in/dp/8167444708" target="_blank" rel="noopener" class="btn btn-outline">Buy on Amazon →</a>
+        </div>
       </div>
     </div>
   </div>
